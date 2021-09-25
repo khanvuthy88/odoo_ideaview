@@ -1,0 +1,38 @@
+$primary-color: #072837;
+
+
+@font-face {
+    font-family: 'KhmerOSKoulen';
+    src: url('/theme_ideaview/static/src/fonts/KhmerOSKoulen.woff');
+}  
+
+
+.idv_header{
+    background-color: $primary-color;
+    color: #fff;
+}
+nav{
+    &.idv-navbar{
+        a{
+            &.logo{
+                img{
+                    @include media-breakpoint-up(md){
+                        height: 50px;
+                    }
+                }
+            }
+        }        
+    }
+    ul{
+        li{
+            &.nav-item{
+                a{
+                    color: #fff;
+                    &:hover{
+                        color: darken($color: #fff, $amount: 10);
+                    }
+                }
+            }
+        }
+    }
+}

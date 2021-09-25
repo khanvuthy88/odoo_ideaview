@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="idv_header_extend_class" inherit_id="website.layout">
+            <xpath expr="//header" position="attributes">
+                <attribute name="t-attf-class" add="idv_header" separator=" "/>
+            </xpath>
+        </template>
+        <template id="idv_header_template" inherit_id="website.layout" name="IDea View Header template">
+            <xpath expr="//header//nav" position="replace">
+                <div class="oe_structure oe_structure_header_idv" id="oe_structure_header_idv"/>
+                <nav data-name="Navbar" class="idv-navbar navbar navbar-expand-lg o_colored_level o_cc shadow-sm">
+                    <div id="top_menu_container" class="container justify-content-end">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-value="'mr-4'"/>
+                        </t>
+                        <!-- Navbar Toggler -->
+                        <t t-call="website.navbar_toggler">
+                            <t t-set="_toggler_class" t-value="'ml-auto'"/>
+                        </t>
+                        <!-- Navbar Collapse -->
+                        <div id="top_menu_collapse" class="collapse navbar-collapse order-last order-lg-0 justify-content-end">
+                            <t t-call="website.navbar_nav">
+                                <t t-set="_nav_class" t-value="'justify-content-end'"/>
+                                <!-- Menu -->
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-call="website.submenu">
+                                        <t t-set="item_class" t-value="'nav-item'"/>
+                                        <t t-set="link_class" t-value="'nav-link'"/>
+                                    </t>
+                                </t>
+                                <!-- Sign In -->
+                                <t t-call="portal.placeholder_user_sign_in">
+                                    <t t-set="_item_class" t-value="'nav-item ml-lg-auto'"/>
+                                    <t t-set="_link_class" t-value="'nav-link font-weight-bold'"/>
+                                </t>
+                                <!-- User Dropdown -->
+                                <t t-call="portal.user_dropdown">
+                                    <t t-set="_user_name" t-value="true"/>
+                                    <t t-set="_item_class" t-value="'nav-item dropdown ml-lg-auto'"/>
+                                    <t t-set="_link_class" t-value="'nav-link font-weight-bold'"/>
+                                </t>
+                            </t>
+                        </div>
+                        <!-- Language Selector -->
+                        <t t-call="website.placeholder_header_language_selector">
+                            <t t-set="_div_classes" t-value="'ml-2'"/>
+                        </t>
+                    </div>
+                </nav>
+            </xpath>
+        </template>
+        <template id="homepage_extend" inherit_id="website.homepage">
+            <xpath expr="//div[hasclass('oe_structure')]" position="replace">
+                <div id="wrap" class="oe_structure">
+                    <p>Lorem is amit</p>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

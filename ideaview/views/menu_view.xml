@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem name="Idea View"
+            id="idv_menu_root"
+            web_icon="ideaview,static/src/img/odoo_icon.png"
+            sequence="40">
+            <menuitem id="idv_menu_book" name="Book" action="ideaview.idv_book_action" sequence="1"/>
+            <menuitem id="idv_menu_book_category" name="Category" action="ideaview.idv_book_category_action" sequence="1"/>
+        </menuitem>
+    </data>
+</odoo>

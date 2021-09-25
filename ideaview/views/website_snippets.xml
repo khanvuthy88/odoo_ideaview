@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="s_ids_homepage_banner" name="IDear View Banner">
+            <section class="s_idv_banner d-block position-relative">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="inner-banner">
+                                <img t-attf-alt="Banner" t-attf-src="/ideaview/static/src/img/banner1.png" t-attf-class="post-thumbnail img img-fluid d-block position-relative"/>
+                                <a t-attf-class="banner-link" t-attf-href="#" title="Banner">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template id="s_ids_new_books" name="New Book">
+            <section id="s_ids_new_books">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="new_book_message mt-5 mb-5 text-center">
+                                <h2 t-attf-class="font-koulen">ស្នាដៃទើបចេញផ្សាយថ្មី</h2>
+                                <p>ខាងក្រោមនេះជាស្នាដៃដែលទើបតែបានបោះពុម្ពចេញផ្សាយថ្មីក្នុងរយៈពេល៣ខែចុងក្រោយ។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="inner-wrapper">
+                                <a t-attf-href="#" t-attf-title="Product" class="inner-book text-decoration-none">
+                                    <article class="book">
+                                        <div class="post-thumbnail">
+                                            <img t-attf-class="img img-fluid" t-attf-alt="Book" t-attf-src="/ideaview/static/src/img/book-1624262442472.jpg"/>
+                                        </div>
+                                        <div class="content">
+                                            <header class="entry-header">
+                                                <h2 t-attf-class="font-koulen">
+                                                    លម្អងដួងចិត្ត <span t-attf-class="pr-1 pl-1"> - </span>
+                                                    <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen">សុខ ចាន់ផល</span>
+                                                </h2>
+                                            </header>
+                                            <p>តម្លៃ: 28,000</p>
+                                            <p>«លម្អងដួងចិត្ត» ជាភាពយន្តនិយាយពីបុព្វហេតុជីវិត – ជីវិតដែលកើតមកជាមួយនឹងក្ដីស្រមៃ – ក្ដីស្រមៃជាគោលដៅនៃការបង្ហាញពីក្ដីស្រឡាញ់ ដើម្បីបំពេញតួនាទី...</p>
+                                        </div>
+                                    </article>
+                                </a>
+                                <a t-attf-href="#" t-attf-title="Product" class="inner-book text-decoration-none">
+                                    <article class="book">
+                                        <div class="post-thumbnail">
+                                            <img t-attf-class="img img-fluid" t-attf-alt="Book" t-attf-src="/ideaview/static/src/img/Monosajetna 2nd.jpg"/>
+                                        </div>
+                                        <div class="content">
+                                            <header class="entry-header">
+                                                <h2 t-attf-class="font-koulen">
+                                                    លម្អងដួងចិត្ត <span t-attf-class="pr-1 pl-1"> - </span>
+                                                    <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen">សុខ ចាន់ផល</span>
+                                                </h2>
+                                            </header>
+                                            <p>តម្លៃ: 28,000</p>
+                                            <p>«លម្អងដួងចិត្ត» ជាភាពយន្តនិយាយពីបុព្វហេតុជីវិត – ជីវិតដែលកើតមកជាមួយនឹងក្ដីស្រមៃ – ក្ដីស្រមៃជាគោលដៅនៃការបង្ហាញពីក្ដីស្រឡាញ់ ដើម្បីបំពេញតួនាទី...</p>
+                                        </div>
+                                    </article>
+                                </a>
+                                <a t-attf-href="#" t-attf-title="Product" class="inner-book text-decoration-none">
+                                    <article class="book">
+                                        <div class="post-thumbnail">
+                                            <img t-attf-class="img img-fluid" t-attf-alt="Book" t-attf-src="/ideaview/static/src/img/book-1631608706579.jpg"/>
+                                        </div>
+                                        <div class="content">
+                                            <header class="entry-header">
+                                                <h2 t-attf-class="font-koulen">
+                                                    លម្អងដួងចិត្ត <span t-attf-class="pr-1 pl-1"> - </span>
+                                                    <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen">សុខ ចាន់ផល</span>
+                                                </h2>
+                                            </header>
+                                            <p>តម្លៃ: 28,000</p>
+                                            <p>«លម្អងដួងចិត្ត» ជាភាពយន្តនិយាយពីបុព្វហេតុជីវិត – ជីវិតដែលកើតមកជាមួយនឹងក្ដីស្រមៃ – ក្ដីស្រមៃជាគោលដៅនៃការបង្ហាញពីក្ដីស្រឡាញ់ ដើម្បីបំពេញតួនាទី...</p>
+                                        </div>
+                                    </article>
+                                </a>
+                                <a t-attf-href="#" t-attf-title="Product" class="inner-book text-decoration-none">
+                                    <article class="book">
+                                        <div class="post-thumbnail">
+                                            <img t-attf-class="img img-fluid" t-attf-alt="Book" t-attf-src="/ideaview/static/src/img/book-1631608837715.jpg"/>
+                                        </div>
+                                        <div class="content">
+                                            <header class="entry-header">
+                                                <h2 t-attf-class="font-koulen">
+                                                    លម្អងដួងចិត្ត <span t-attf-class="pr-1 pl-1"> - </span>
+                                                    <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen">សុខ ចាន់ផល</span>
+                                                </h2>
+                                            </header>
+                                            <p>តម្លៃ: 28,000</p>
+                                            <p>«លម្អងដួងចិត្ត» ជាភាពយន្តនិយាយពីបុព្វហេតុជីវិត – ជីវិតដែលកើតមកជាមួយនឹងក្ដីស្រមៃ – ក្ដីស្រមៃជាគោលដៅនៃការបង្ហាញពីក្ដីស្រឡាញ់ ដើម្បីបំពេញតួនាទី...</p>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template id="s_idv_popular_book" name="Popular book this month">
+            <section id="s_idv_popular_book" class="s_idv_popular_book d-block position-relativve">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="inner-popular-book-message text-center">
+                                <h2 t-attf-class="font-koulen text-center">សៀវភៅពេញនិយមប្រចាំខែ</h2>
+                                <p>សៀវភៅទាំង៤ចំណងជើងខាងក្រោមនេះ គឺជាស្នាដៃដែលលក់ដាច់ច្រើនជាងគេក្នុងខែមុន។</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-6">
+                            <div class="inner-popular-book">
+                                <a t-attf-class="d-block position-relative" t-attf-title="Product" t-attf-href="#">
+                                    <div class="post-thumbnail">
+                                        <img t-attf-class="img img-fluid rounded" t-attf-src="/ideaview/static/src/img/book-1624262442472.jpg"/>
+                                    </div>
+                                    <div class="content">
+                                        <h2 t-attf-class="text-truncate"> អ្នកនិពន្ធ៖ <span>សែត ហត្ថា (កូនចាបមាស)</span> </h2>
+                                        <h2 t-attf-class="font-koulen"> លម្អងដួងចិត្ត </h2>
+                                        <div class="price"> តម្លៃ: <span>28,000</span> </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="inner-popular-book">
+                                <a t-attf-class="d-block position-relative" t-attf-title="Product" t-attf-href="#">
+                                    <div class="post-thumbnail">
+                                        <img t-attf-class="img img-fluid rounded" t-attf-src="/ideaview/static/src/img/book-1620733275383.jpg"/>
+                                    </div>
+                                    <div class="content">
+                                        <h2 t-attf-class="text-truncate"> អ្នកនិពន្ធ៖ <span>សែត ហត្ថា (កូនចាបមាស)</span> </h2>
+                                        <h2 t-attf-class="font-koulen"> លម្អងដួងចិត្ត </h2>
+                                        <div class="price"> តម្លៃ: <span>28,000</span> </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="inner-popular-book">
+                                <a t-attf-class="d-block position-relative" t-attf-title="Product" t-attf-href="#">
+                                    <div class="post-thumbnail">
+                                        <img t-attf-class="img img-fluid rounded" t-attf-src="/ideaview/static/src/img/book-1621059592068.jpeg"/>
+                                    </div>
+                                    <div class="content">
+                                        <h2 t-attf-class="text-truncate"> អ្នកនិពន្ធ៖ <span>សែត ហត្ថា (កូនចាបមាស)</span> </h2>
+                                        <h2 t-attf-class="font-koulen"> លម្អងដួងចិត្ត </h2>
+                                        <div class="price"> តម្លៃ: <span>28,000</span> </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="inner-popular-book">
+                                <a t-attf-class="d-block position-relative" t-attf-title="Product" t-attf-href="#">
+                                    <div class="post-thumbnail">
+                                        <img t-attf-class="img img-fluid rounded" t-attf-src="/ideaview/static/src/img/Cover-(official).jpg"/>
+                                    </div>
+                                    <div class="content">
+                                        <h2 t-attf-class="text-truncate"> អ្នកនិពន្ធ៖ <span>សែត ហត្ថា (កូនចាបមាស)</span> </h2>
+                                        <h2 t-attf-class="font-koulen"> លម្អងដួងចិត្ត </h2>
+                                        <div class="price"> តម្លៃ: <span>28,000</span> </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="s_snippet_idv_product" inherit_id="website.snippets" name="Book Product">
+            <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+                <t t-snippet="ideaview.s_ids_new_books" t-thumbnail="/ideaview/static/src/img/ui/book.png"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_options']" position="inside">
+                <div data-selector=".book_snippet">
+                    <we-select string="Table Style">
+                        <we-button data-select-class="table-striped"> Striped </we-button>
+                        <we-button data-select-class="table-dark"> Dark </we-button>
+                        <we-button data-select-class="table-bordered"> Bordered </we-button>
+                    </we-select>
+                    <we-button-group string="No of Books" data-attribute-name="numberOfBooks">
+                        <we-button data-select-data-attribute="5"> 5</we-button>
+                    </we-button-group>
+                </div>
+            </xpath>
+        </template>
+        <template id="s_snippet_idv_homepage_banner" inherit_id="website.snippets" name="Home Banner">
+            <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+                <t t-snippet="ideaview.s_ids_homepage_banner"
+                        t-thumbnail="/ideaview/static/src/img/ui/banner.png"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

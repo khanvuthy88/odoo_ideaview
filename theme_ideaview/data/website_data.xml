@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="idv_homepage" model="ir.ui.view">
+            <field name="name">Idea View Homepage</field>
+            <field name="type">qweb</field>
+            <field name="key">theme_ideaview.idv_homepage</field>
+            <field name="arch" type="xml">
+                <t name="Home" priority="29" t-name="theme_ideaview.idv_homepage">
+                    <t t-call="website.layout">
+                        <t t-set="pageName" t-value="'idv_homepage'"/>
+                        <div id="wrap" class="oe_structure oe_empty">
+                            <t t-call="ideaview.s_ids_new_books"/>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+
+        <record id="idv_homepage_page" model="website.page">
+            <field name="is_published">True</field>
+            <field name="url">/idv-homepage</field>
+            <field name="view_id" ref="idv_homepage"/>
+            <field name="track">True</field>
+        </record>
+    </data>
+</odoo>

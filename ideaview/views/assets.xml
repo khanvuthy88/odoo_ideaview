@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="idv_style_assets_frontend" name="Idea View style" inherit_id="website.assets_frontend">
+            <xpath expr="link[last()]" position="after">
+                <link rel="stylesheet" type="text/scss" href="/ideaview/static/src/scss/style.scss"/>
+            </xpath>
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/ideaview/static/src/js/frontend.js"/>
+                <script type="text/javascript" src="/ideaview/static/src/js/snippets.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

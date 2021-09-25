@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="homepage_extend_view" model="ir.ui.view">
+            <field name="name">homepage_extend_view</field>
+            <field name="inherit_id" ref="website.homepage"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_structure')]" position="replace">
+                    <div class="oe_structure"/>
+                    <div id="wrap" class="oe_structure">
+                        <t t-call="ideaview.s_ids_new_books"/>
+                    </div>
+                    <div class="oe_structure"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

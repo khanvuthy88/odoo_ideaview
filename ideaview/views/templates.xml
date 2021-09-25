@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="index" name="Idea view Navigation">
+            <t t-call="website.layout">
+                <div id="wrap" class="idv_website idv_index">
+                    <t t-raw="0"/>
+
+                    <!-- Droppable-area shared across all blog's pages -->
+                    <t t-set="oe_structure_blog_footer_description">Visible in all blogs' pages</t>
+                    <div class="oe_structure oe_empty"
+                        id="oe_structure_blog_footer"
+                        t-att-data-editor-sub-message="oe_structure_blog_footer_description"/>
+                </div>
+            </t>
+        </template>
+        <template id="idv_homepage" name="IDear View Homepage">
+            <t t-call="ideaview.index">
+                <div class="oe_structure"/>
+                <t t-call="ideaview.s_ids_homepage_banner"/>
+                <div class="oe_structure"/>
+                <section id="s_ids_new_books">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="new_book_message mt-5 mb-5 text-center">
+                                    <h2 t-attf-class="font-koulen">ស្នាដៃទើបចេញផ្សាយថ្មី</h2>
+                                    <p>ខាងក្រោមនេះជាស្នាដៃដែលទើបតែបានបោះពុម្ពចេញផ្សាយថ្មីក្នុងរយៈពេល៣ខែចុងក្រោយ។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="inner-wrapper">
+                                    <a t-foreach="new_books" t-as="book" t-att-href="book.website_url" t-att-title="book.name" class="inner-book text-decoration-none">
+                                        <article class="book">
+                                            <div class="post-thumbnail" t-field="book.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round"}'/>
+                                            <div class="content">
+                                                <header class="entry-header">
+                                                    <h2 t-attf-class="font-koulen">
+                                                        <span t-field="book.name"/> <span t-attf-class="pr-1 pl-1"> - </span>
+                                                        <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen" t-field="book.author_id"/>
+                                                    </h2>
+                                                </header>
+                                                <p t-field="book.price"/>
+                                                <p>«លម្អងដួងចិត្ត» ជាភាពយន្តនិយាយពីបុព្វហេតុជីវិត – ជីវិតដែលកើតមកជាមួយនឹងក្ដីស្រមៃ – ក្ដីស្រមៃជាគោលដៅនៃការបង្ហាញពីក្ដីស្រឡាញ់ ដើម្បីបំពេញតួនាទី...</p>
+                                            </div>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+        <template id="idv_category_tmp">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">ប្រភេទសៀវភៅ</div>
+                        <ul class="list-group-flush list-group">
+                            <li t-attf-class="list-group-item" t-foreach="category_obj" t-as="cate">
+                                <a t-attf-class="d-block text-decoration-none" t-att-title="cate.name" t-attf-href="#" t-esc="cate.name"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="idv_single_book" name="IDear View single book">
+            <t t-call="ideaview.index">
+                <div class="oe_structure"/>
+                <section id="idv_single_book">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <t t-call="ideaview.idv_category_tmp"/>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <article class="card single-book">
+                                            <div class="card-body">
+                                                <div class="summary">
+                                                    <div class="post-thumbnail">
+                                                        <span t-field="book.image_1024" t-options='{"widget": "image", "preview_image": "image_1024", "class": "d-block mx-auto rounded"}'/>
+                                                        <a t-att-data-id="book.id" id="add_to_cart" t-attf-href="#" t-attf-title="Add to Cart" t-attf-class="btn btn-link btn-primary text-decoration-none w-100 mt-2 mb-2"><i class="fa fa-cart-plus pr-2"/>ទិញសៀវភៅនេះ</a>
+                                                    </div>
+                                                    <div class="inner-summary">
+                                                        <h1 class="card-title font-koulen">ចំណងជើង: <span t-field="book.name"/></h1>
+                                                        <ul class="summary list-unstyled">
+                                                            <li>និពន្ធដោយ : <a t-attf-class="text-decoration-none" t-att-title="book.author_id" t-field="book.author_id" t-attf-href="#"/></li>
+                                                            <li>ប្រភេទ : <a t-attf-class="text-decoration-none" t-att-title="book.book_category" t-attf-href="#" t-field="book.book_category"/></li>
+                                                            <li>តម្លៃ: <span t-field="book.price"/> <span t-esc="book.currency_id.symbol"/></li>
+                                                            <li>ចំនួនអ្នកចូលមើល: <span t-field="book.price"/></li>
+                                                            <li>ខ្នាតសៀវភៅ: <span t-field="book.book_size"/></li>
+                                                            <li>ទំព័រ: <span t-field="book.number_of_pages"/></li>
+                                                            <li>លេខសម្គាល់សៀវភៅ: <span t-field="book.book_isbn"/></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="content">
+                                                    <p class="card-text" t-field="book.description"/>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+    </data>
+</odoo>
