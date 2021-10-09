@@ -41,6 +41,9 @@
                                 <field name="website_id"/>
                             </group>
                         </group>
+                        <group>
+                            <field name="teaser_manual"/>
+                        </group>
                         <notebook>
                             <page string="Description">
                                 <field name="description"/>

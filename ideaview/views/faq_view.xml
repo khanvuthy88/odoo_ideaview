@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="idv_faq_list" model="ir.ui.view">
+            <field name="name">idv_faq_list</field>
+            <field name="model">idv.faq</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="answer"/>
+                </tree>
+            </field>
+        </record>
+        <record id="idv_faq_form" model="ir.ui.view">
+            <field name="name">idv_faq_form</field>
+            <field name="model">idv.faq</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="question"/>
+                            <field name="answer"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="idv_faq_action" model="ir.actions.act_window">
+            <field name="name">FAQ</field>
+            <field name="res_model">idv.faq</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

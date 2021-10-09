@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
+        <template id="s_idv_blog_card_row">
+            <article id="blog_card_row" class="card-row">
+                <a class="post-thumbnail" t-attf-href="#" t-attf-title="Article title">
+                    <img t-attf-class="img img-fluid" t-attf-alt="Article title" t-attf-src="/ideaview/static/src/img/photo-1620799004374.jpg"/>
+                </a>
+                <div class="content">
+                    <header class="entry-header">
+                        <a t-attf-class="text-decoration-none d-block position-relative" t-attf-title="Article Name" t-attf-href="#">
+                            <h2 class="entry-title">ស្រីល្អគន់ និងសៀវភៅអានមិនយល់</h2>
+                        </a>
+                    </header>
+                    <div class="entry-content">
+                        <p>ក្រោយមក នាងស​ម្លឹង​មើល​មក​ខ្ញុំ រួច​និយាយ​ថា “និយាយ​ជាមួយ​អ្នក​ពូកែ​អាន អាន​សៀវភៅ​បាន​ច្រើន គឺ​និយាយ​មិន​ឈ្នះ​មែន។ ខ្លួនឯង​មិន​សង្ហា​ហើយ នៅ​រកហេតុផល​តទល់​នឹង​ខ្ញុំ​បាន​ទៀត​! ចាប់ពី​ពេលនេះ​ទៅ ខ្ញុំ​នឹង​ប្រឹង​អាន រក​ទ្រឹ​ស្តី​ល្អ​ៗ វិភាគ​គំ​និ​តជ្រៅ​ៗ ហើយ​សង្ឃឹមថានឹង​បាន​ជជែក​ដេញដោល​នឹង​បង​ទៀត​”។ ...</p>
+                    </div>
+                </div>
+            </article>
+        </template>
+        <template id="s_idv_power_of_reading_template">
+            <t t-call="ideaview.index">
+                <section id="s_idv_power_of_reading">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <t t-call="ideaview.idv_header_message"/>
+                <section id="idv_blog_card_row">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <t t-call="ideaview.s_idv_blog_card_row"/>
+                                <t t-call="ideaview.s_idv_blog_card_row"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <t t-call="ideaview.s_idv_accordion"/>
+            </t>
+        </template>
+        <template id="s_idv_accordion" name="Accordion">
+            <section class="s_idv_accordion pt32 pb32">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 pt32 pb32">
+                            <h2>សំណួរ​ដែលគេ​ច្រើន​សួរ</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header bg-white" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Collapsible Group Item #1
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header bg-white" id="headingTwo">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Collapsible Group Item #2
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            Some placeholder content for the second accordion panel. This panel is hidden by default.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
         <template id="s_ids_homepage_banner" name="IDear View Banner">
             <section class="s_idv_banner d-block position-relative">
                 <div class="container">
@@ -181,6 +269,9 @@
         <template id="s_snippet_idv_product" inherit_id="website.snippets" name="Book Product">
             <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
                 <t t-snippet="ideaview.s_ids_new_books" t-thumbnail="/ideaview/static/src/img/ui/book.png"/>
+                <t t-snippet="ideaview.s_idv_accordion" t-thumbnail="/ideaview/static/src/img/ui/2.png">
+                    <keywords>common answers, common questions</keywords>
+                </t>
             </xpath>
             <xpath expr="//div[@id='snippet_options']" position="inside">
                 <div data-selector=".book_snippet">

@@ -22,7 +22,7 @@
                         <!-- Navbar Collapse -->
                         <div id="top_menu_collapse" class="collapse navbar-collapse order-last order-lg-0 justify-content-end">
                             <t t-call="website.navbar_nav">
-                                <t t-set="_nav_class" t-value="'justify-content-end'"/>
+                                <t t-set="_nav_class" t-value="'justify-content-end nav-pills'"/>
                                 <!-- Menu -->
                                 <t t-foreach="website.menu_id.child_id" t-as="submenu">
                                     <t t-call="website.submenu">
@@ -30,6 +30,18 @@
                                         <t t-set="link_class" t-value="'nav-link'"/>
                                     </t>
                                 </t>
+                                <li t-attf-class="#{item_class or ''}">
+                                    <a t-attf-href="/book/cart/view"
+                                        t-attf-class="nav-link text-white"
+                                        role="menuitem"
+                                        t-ignore="true">
+                                        <span class="cart-menu">
+                                            <i class="fa fa-shopping-cart"/>
+                                            <span class="cart-item"/>
+                                        </span>
+
+                                    </a>
+                                </li>
                                 <!-- Sign In -->
                                 <t t-call="portal.placeholder_user_sign_in">
                                     <t t-set="_item_class" t-value="'nav-item ml-lg-auto'"/>

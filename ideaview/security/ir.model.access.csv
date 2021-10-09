@@ -1,3 +1,16 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_book_category_group_user,book_category_group_user,model_idv_book_category,base.group_user,1,1,1,1
 access_book_group_user,book_group_user,model_idv_book,base.group_user,1,1,1,1
+access_blog_category_group_user,blog_category_group_user,model_idv_blog_category,base.group_user,1,1,1,1
+access_blog_category_group_public,blog_category_group_public,model_idv_blog_category,base.group_public,1,0,0,0
+access_blog_post_group_user,blog_post_group_user,model_idv_blog,base.group_user,1,1,1,1
+access_blog_post_group_public,blog_post_group_public,model_idv_blog,base.group_public,1,0,0,0
+access_res_partner_group_public,res_partner_group_public,base.model_res_partner,base.group_public,1,0,0,0
+access_idv_book_customer_group_user,idv_book_customer_group_user,model_idv_book_customer,base.group_user,1,1,1,1
+access_idv_book_customer_group_public,idv_book_customer_group_public,model_idv_book_customer,base.group_public,1,0,0,0
+access_idv_book_order_group_user,idv_book_order_group_user,model_idv_book_order,base.group_user,1,1,1,1
+access_idv_book_order_group_public,idv_book_order_group_public,model_idv_book_order,base.group_public,1,0,0,0
+access_idv_book_order_line_group_user,idv_book_order_line_group_user,model_idv_book_order_line,base.group_user,1,1,1,1
+access_idv_book_order_line_group_public,idv_book_order_line_group_public,model_idv_book_order_line,base.group_public,1,0,0,0
+access_idv_faq_group_user,idv_faq_group_user,model_idv_faq,base.group_user,1,1,1,1
+access_idv_faq_public_user,idv_faq_group_public,model_idv_faq,base.group_public,1,0,0,0

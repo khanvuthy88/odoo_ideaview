@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="idv_book_customer_list" model="ir.ui.view">
+            <field name="name">idv_book_customer_list</field>
+            <field name="model">idv.book.customer</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name"/>
+                    <field name="phone_number"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+        <record id="idv_book_customer_action" model="ir.actions.act_window">
+            <field name="name">Book Customer</field>
+            <field name="res_model">idv.book.customer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

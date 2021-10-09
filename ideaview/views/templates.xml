@@ -14,55 +14,208 @@
                 </div>
             </t>
         </template>
+        <template id="idv_book_card_tmp">
+            <div class="book_card">
+                <a t-attf-class="d-block position-relative" t-att-href="book.website_url" t-att-title="book.name">
+                    <div class="post-thumbnail" t-field="book.image_512" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round"}'/>
+                    <div class="content">
+                        <h2 t-attf-class="text-truncate"> អ្នកនិពន្ធ៖ <span t-field="book.author_id"/></h2>
+                        <h2 t-attf-style="padding:.5rem 0;" t-attf-class="font-koulen text-truncate" t-field="book.name"/>
+                        <div class="price"> តម្លៃ: <span t-field="book.price"/></div>
+                    </div>
+                </a>
+            </div>
+        </template>
+        <template id="idv_blog_card_tmp" name="Idea View Blog Template">
+            <section id="idv_blog_card_tmp">
+                <div class="container">
+                    <div class="row">
+                        <div t-foreach="blogs" t-as="blog" t-attf-class="#{col or 'col-md-3'}">
+                            <article class="card card-blog">
+                                <a t-att-href="blog.website_url" t-att-title="blog.name" t-attf-class="post-thumbnail" t-field="blog.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round card-img-top"}'/>
+                                <div class="card-body">
+                                    <a t-attf-class="d-block position-relative text-decoration-none" t-att-title="blog.name" t-att-href="blog.website_url">
+                                        <h2 class="blog-name text-truncate" t-field="blog.name"/>
+                                    </a>
+                                    <p class="blog-content" t-field="blog.teaser"/>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template id="idv_blog_latest_news_tmp" name="Idea view latest news">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card latest-news-card">
+                        <div class="card-header" t-esc="cart_title"/>
+                        <ul class="list-group-flush list-group">
+                            <li t-attf-class="list-group-item d-flex w-100 justify-content-between" t-foreach="latest" t-as="post">
+                                <a t-att-href="post.website_url" t-attf-class="post-thumbnail d-block position-relative" t-att-title="post.name" t-field="post.image_256" t-options='{"widget": "image", "preview_image": "image_256", "class": "d-block mx-auto rounded w-100"}'/>
+                                <div class="content d-block position-relative text-truncate">
+                                    <a t-att-title="post.name" t-field="post.name" t-attf-class="text-truncate text-decoration-none" t-att-href="post.website_url"/>
+                                    <p class="text-muted" t-field="blog.create_date" t-options='{"format": "dd MMM Y"}'/>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="idv_header_message" name="IDea view Message">
+            <section id="idv_header_message">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="new_book_message mt-5 mb-5 text-center">
+                                <h2 t-attf-class="font-koulen" t-esc="title_message or 'សៀវភៅដែលអ្នកអាចស្វែងរកពីពួកយើង'"/>
+                                <p t-esc="message or 'ខាងក្រោមនេះជាចំណងជើងសៀវភៅទាំងអស់ដែលយើងមានលក់។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។'"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template id="idv_new_book_style1" name="Idea view Book style 1">
+            <section id="idv_new_book_style_tmp_1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="inner-wrapper">
+                                <a t-foreach="search_books" t-as="book" t-att-href="book.website_url" t-att-title="book.name" class="inner-book text-decoration-none">
+                                    <article class="book">
+                                        <div class="post-thumbnail" t-field="book.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round"}'/>
+                                        <div class="content">
+                                            <header class="entry-header">
+                                                <h2 t-attf-class="font-koulen">
+                                                    <span t-field="book.name"/> <span t-attf-class="pr-1 pl-1"> - </span>
+                                                    <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen" t-field="book.author_id"/>
+                                                </h2>
+                                            </header>
+                                            <p t-field="book.price"/>
+                                            <p t-field="book.teaser"/>
+                                        </div>
+                                    </article>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </template>
+        <template id="idv_book_style_2">
+            <div class="inner-wrapper">
+                <a t-foreach="new_books" t-as="book" t-att-href="book.website_url" t-att-title="book.name" class="inner-book text-decoration-none">
+                    <article class="book">
+                        <div class="post-thumbnail" t-field="book.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round"}'/>
+                        <div class="content">
+                            <header class="entry-header">
+                                <h2 t-attf-class="font-koulen">
+                                    <span t-field="book.name"/> <span t-attf-class="pr-1 pl-1"> - </span>
+                                    <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen" t-field="book.author_id"/>
+                                </h2>
+                            </header>
+                            <p t-field="book.price"/>
+                            <p t-if="string_concat" t-esc="book.teaser[:90]"/>
+                            <p t-else="" t-esc="book.teaser"/>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </template>
         <template id="idv_homepage" name="IDear View Homepage">
             <t t-call="ideaview.index">
                 <div class="oe_structure"/>
                 <t t-call="ideaview.s_ids_homepage_banner"/>
                 <div class="oe_structure"/>
+                <t t-call="ideaview.idv_header_message">
+                    <t t-set="title_message" t-valuef="ស្នាដៃទើបចេញផ្សាយថ្មី"/>
+                    <t t-set="message" t-valuef="ខាងក្រោមនេះជាស្នាដៃដែលទើបតែបានបោះពុម្ពចេញផ្សាយថ្មីក្នុងរយៈពេល៣ខែចុងក្រោយ។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។"/>
+                </t>
                 <section id="s_ids_new_books">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <div class="new_book_message mt-5 mb-5 text-center">
-                                    <h2 t-attf-class="font-koulen">ស្នាដៃទើបចេញផ្សាយថ្មី</h2>
-                                    <p>ខាងក្រោមនេះជាស្នាដៃដែលទើបតែបានបោះពុម្ពចេញផ្សាយថ្មីក្នុងរយៈពេល៣ខែចុងក្រោយ។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="inner-wrapper">
-                                    <a t-foreach="new_books" t-as="book" t-att-href="book.website_url" t-att-title="book.name" class="inner-book text-decoration-none">
-                                        <article class="book">
-                                            <div class="post-thumbnail" t-field="book.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round"}'/>
-                                            <div class="content">
-                                                <header class="entry-header">
-                                                    <h2 t-attf-class="font-koulen">
-                                                        <span t-field="book.name"/> <span t-attf-class="pr-1 pl-1"> - </span>
-                                                        <span t-attf-class="font-Noto-Khmer"> និពន្ធដោយ៖ : </span><span t-attf-class="font-koulen" t-field="book.author_id"/>
-                                                    </h2>
-                                                </header>
-                                                <p t-field="book.price"/>
-                                                <p>«លម្អងដួងចិត្ត» ជាភាពយន្តនិយាយពីបុព្វហេតុជីវិត – ជីវិតដែលកើតមកជាមួយនឹងក្ដីស្រមៃ – ក្ដីស្រមៃជាគោលដៅនៃការបង្ហាញពីក្ដីស្រឡាញ់ ដើម្បីបំពេញតួនាទី...</p>
-                                            </div>
-                                        </article>
-                                    </a>
-                                </div>
+                                <t t-call="ideaview.idv_book_style_2"/>
                             </div>
                         </div>
                     </div>
                 </section>
                 <div class="oe_structure"/>
+                <t t-call="ideaview.idv_header_message">
+                    <t t-set="title_message" t-valuef="សៀវភៅពេញនិយមប្រចាំខែ"/>
+                    <t t-set="message" t-valuef="សៀវភៅទាំង៤ចំណងជើងខាងក្រោមនេះ គឺជាស្នាដៃដែលលក់ដាច់ច្រើនជាងគេក្នុងខែមុន។"/>
+                </t>
+                <section id="s_idv_popular_book" class="s_idv_popular_book d-block position-relativve">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-6" t-foreach="popular_books" t-as="book">
+                                <t t-call="ideaview.idv_book_card_tmp"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="oe_structure"/>
+                <t t-call="ideaview.idv_header_message"/>
+                <t t-call="ideaview.idv_new_book_style1"/>
+                <div class="oe_structure"/>
+                <t t-call="ideaview.idv_header_message">
+                    <t t-set="title_message" t-valuef="អត្ថបទចែករំលែក"/>
+                    <t t-set="message" t-valuef="សូមអរគុណដែលចំណាយពេលវេលាក្នុងការអាន និងចែករំលែកបន្តទៅកាន់មិត្តភក្ដិផ្សេងទៀត និងសូមទទួលបានប្រយោជន៍ច្រើន ពីការអានដោយការត្រិះរិះពិចារណា!"/>
+                </t>
+                <t t-call="ideaview.idv_blog_card_tmp">
+                    <t t-set="col" t-valuef="col-md-4"/>
+                    <t t-set="blogs" t-value="latest_blog"/>
+                </t>
             </t>
+        </template>
+        <template id="idv_book_category_tmp" name="Book Category Side bar">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-category">
+                        <div class="card-header" t-esc="cart_title"/>
+                        <ul class="list-group-flush list-group">
+                            <li t-attf-class="list-group-item" t-foreach="category_obj" t-as="cate">
+                                <a t-attf-class="text-decoration-none d-flex justify-content-between align-items-center" t-att-title="cate.name" t-att-href="cate.website_url">
+                                    <span t-field="cate.name"/>
+                                    <span class="badge bg-primary rounded-pill" t-field="cate.book_post_count"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="div_book_author_tmp" name="Book Author Side bar">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-category">
+                        <div class="card-header" t-esc="cart_title"/>
+                        <ul class="list-group-flush list-group">
+                            <li t-attf-class="list-group-item" t-foreach="author_obj" t-as="author">
+                                <a t-attf-class="text-decoration-none d-flex justify-content-between align-items-center" t-att-title="author.name" t-att-href="author.book_website_url">
+                                    <span t-field="author.name"/>
+                                    <span class="badge bg-primary rounded-pill" t-field="author.book_post_count"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </template>
         <template id="idv_category_tmp">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">ប្រភេទសៀវភៅ</div>
+                    <div class="card card-category">
+                        <div class="card-header" t-esc="cart_title"/>
                         <ul class="list-group-flush list-group">
                             <li t-attf-class="list-group-item" t-foreach="category_obj" t-as="cate">
-                                <a t-attf-class="d-block text-decoration-none" t-att-title="cate.name" t-attf-href="#" t-esc="cate.name"/>
+                                <a t-attf-class="text-decoration-none d-flex justify-content-between align-items-center" t-att-title="cate.name" t-att-href="cate.website_url">
+                                    <span t-field="cate.name"/>
+                                    <span class="badge bg-primary rounded-pill" t-esc="blog_post_count"/>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -76,7 +229,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                <t t-call="ideaview.idv_category_tmp"/>
+                                <t t-call="ideaview.idv_book_category_tmp">
+                                    <t t-set="cart_title" t-valuef="ប្រភេទសៀវភៅ"/>
+                                </t>
+                                <t t-call="ideaview.div_book_author_tmp">
+                                    <t t-set="cart_title" t-valuef="ស្នាដៃផ្សេងៗពីអ្នកនិពន្ធ"/>
+                                    <t t-set="category_obj" t-value="author_obj"/>
+                                </t>
                             </div>
                             <div class="col-md-9">
                                 <div class="row">
@@ -85,15 +244,15 @@
                                             <div class="card-body">
                                                 <div class="summary">
                                                     <div class="post-thumbnail">
-                                                        <span t-field="book.image_1024" t-options='{"widget": "image", "preview_image": "image_1024", "class": "d-block mx-auto rounded"}'/>
+                                                        <span t-attf-class="d-block position-relative post-thumbnail" t-field="book.image_1024" t-options='{"widget": "image", "preview_image": "image_1024", "class": "d-block mx-auto rounded w-100"}'/>
                                                         <a t-att-data-id="book.id" id="add_to_cart" t-attf-href="#" t-attf-title="Add to Cart" t-attf-class="btn btn-link btn-primary text-decoration-none w-100 mt-2 mb-2"><i class="fa fa-cart-plus pr-2"/>ទិញសៀវភៅនេះ</a>
                                                     </div>
                                                     <div class="inner-summary">
                                                         <h1 class="card-title font-koulen">ចំណងជើង: <span t-field="book.name"/></h1>
                                                         <ul class="summary list-unstyled">
-                                                            <li>និពន្ធដោយ : <a t-attf-class="text-decoration-none" t-att-title="book.author_id" t-field="book.author_id" t-attf-href="#"/></li>
-                                                            <li>ប្រភេទ : <a t-attf-class="text-decoration-none" t-att-title="book.book_category" t-attf-href="#" t-field="book.book_category"/></li>
-                                                            <li>តម្លៃ: <span t-field="book.price"/> <span t-esc="book.currency_id.symbol"/></li>
+                                                            <li>និពន្ធដោយ : <a t-attf-class="text-decoration-none" t-att-title="book.author_id.name" t-field="book.author_id" t-att-href="book.author_id.book_website_url"/></li>
+                                                            <li>ប្រភេទ : <a t-attf-class="text-decoration-none" t-att-title="book.book_category" t-att-href="book.book_category.website_url" t-field="book.book_category"/></li>
+                                                            <li>តម្លៃ: <span t-field="book.price"/></li>
                                                             <li>ចំនួនអ្នកចូលមើល: <span t-field="book.price"/></li>
                                                             <li>ខ្នាតសៀវភៅ: <span t-field="book.book_size"/></li>
                                                             <li>ទំព័រ: <span t-field="book.number_of_pages"/></li>
@@ -114,6 +273,324 @@
                     </div>
                 </section>
                 <div class="oe_structure"/>
+            </t>
+        </template>
+        <template id="idv_blog_post_single" name="Idea View single post">
+            <t t-call="ideaview.index">
+                <section id="idv_blog_post_single">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
+                                        <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                                            <a t-attf-class="text-decoration-none" t-attf-title="អត្ថបទចែករំលែក" property="item" typeof="WebPage" href="/blog">
+                                                <span property="name">អត្ថបទចែករំលែក</span>
+                                                <meta property="position" content="1"/>
+                                            </a>
+                                        </li>
+                                        <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                                            <a t-attf-class="text-decoration-none" t-att-title="blog.category_id.name" property="item" typeof="WebPage" t-att-href="blog.category_id.website_url">
+                                                <span property="name" t-field="blog.category_id"/>
+                                                <meta property="position" content="2"/>
+                                            </a>
+                                        </li>
+                                        <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">
+                                            <span property="name" t-field="blog.name"/>
+                                            <meta property="position" content="2"/>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <article class="idv_blog_single card">
+                                            <div class="card-body">
+                                                <div t-attf-class="post-thumbnail" t-field="blog.image_1024" t-options='{"widget": "image", "preview_image": "image_1024", "class": "d-block mx-auto rounded w-100"}'/>
+                                                <header class="entry-header">
+                                                    <h1 class="entry-title" t-attf-class="d-block position-relative" t-field="blog.name"/>
+                                                    <div class="post-meta-wrapper">
+                                                        <ul class="post-meta list-unstyled">
+                                                            <li class="post-author"><i class="fa fa-user"/> <span>អត្ថបទដោយ៖ <a t-attf-class="text-decoration-none" t-att-title="blog.author_name" t-att-href="blog.author_id.author_website_url" t-field="blog.author_name"/></span></li>
+                                                            <li class="entry-categories"><i class="fa fa-folder"/> <span>ប្រភេទ៖ <a t-attf-class="text-decoration-none" t-att-title="blog.category_id.name" t-att-href="blog.category_id.website_url" t-field="blog.category_id"/></span></li>
+                                                            <li class="post-date"><i class="fa fa-calendar"/> <span t-field="blog.create_date" t-options='{"format": "dd MMM Y"}'/></li>
+                                                        </ul>
+                                                    </div>
+                                                </header>
+                                                <div class="entry-content">
+                                                    <p t-field="blog.content"/>
+                                                </div>
+                                                <t t-call="website.s_share"/>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <t t-call="ideaview.idv_category_tmp">
+                                    <t t-set="cart_title" t-valuef="ប្រភេទអត្ថបទផ្សេងៗ"/>
+                                </t>
+                                <t t-call="ideaview.idv_blog_latest_news_tmp">
+                                    <t t-set="cart_title" t-valuef="អត្ថបទថ្មី"/>
+                                    <t t-set="latest" t-value="latest"/>
+                                </t>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="oe_structure"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+        <template id="idv_blog_post_by_category" name="Idea view post by category">
+            <t t-call="ideaview.index">
+                <section id="idv_blog_post_by_category">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <header class="page-header">
+                                            <h1 class="page-title" t-esc="category"/>
+                                        </header><!-- .page-header -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div t-foreach="posts" t-as="blog" t-attf-class="col-md-4">
+                                        <article class="card card-blog">
+                                            <a t-att-href="blog.website_url" t-att-title="blog.name" t-attf-class="post-thumbnail" t-field="blog.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round card-img-top"}'/>
+                                            <div class="card-body">
+                                                <a t-attf-class="d-block position-relative text-decoration-none" t-att-title="blog.name" t-att-href="blog.website_url">
+                                                    <h2 class="blog-name text-truncate" t-field="blog.name"/>
+                                                </a>
+                                                <p class="blog-content" t-field="blog.teaser"/>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-inline justify-content-center my-3">
+                                            <t t-call="website.pager"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <t t-call="ideaview.idv_category_tmp">
+                                    <t t-set="cart_title" t-valuef="ប្រភេទអត្ថបទផ្សេងៗ"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+        <template id="idv_book_author_category" name="Book category and author page">
+            <t t-call="ideaview.index">
+                <section id="idv_book_author_category">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 mt-md-3">
+                                <t t-call="ideaview.idv_book_category_tmp">
+                                    <t t-set="cart_title" t-valuef="ប្រភេទសៀវភៅ"/>
+                                    <t t-set="category_obj" t-value="book_category"/>
+                                </t>
+                                <t t-call="ideaview.div_book_author_tmp">
+                                    <t t-set="cart_title" t-valuef="ស្នាដៃផ្សេងៗពីអ្នកនិពន្ធ"/>
+                                    <t t-set="author_obj" t-value="book_author"/>
+                                </t>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <t t-call="ideaview.idv_book_style_2">
+                                            <t t-set="string_concat" t-value="100"/>
+                                            <t t-set="new_books" t-value="books"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-inline justify-content-center my-3">
+                                            <t t-call="website.pager"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+        <template id="idv_book_cart_view" name="Idea cart view">
+            <t t-call="ideaview.index">
+                <section id="idv_book_cart_view">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <header class="page-header">
+                                    <h1 class="page-title font-koulen">បញ្ជីរទំនិញរបស់អ្នក</h1>
+                                </header><!-- .page-header -->
+                            </div>
+                            <div class="col-12">
+                                <table class="table bg-light table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>ចំណងជើង</th>
+                                            <th>បរិមាណ</th>
+                                            <th>តម្លៃ​ឯកតា</th>
+                                            <th>ក្របសៀវភៅ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-cart-item">
+                                        <tr>
+
+                                        </tr>
+                                    </tbody>
+                                    <tfoot class="footer-cart-item">
+                                        <tr>
+                                            <td class="text-right" colspan="3">តម្លៃសរុប</td>
+                                            <td><span class="text-right book-ordered-total"/> ៛</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-right">
+                                                <button data-url="/book/order/js" class="btn btn-primary make-order-js">ទូទាត់ប្រាក់</button>
+                                            </td>
+                                            <td/>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div id="modal_book_order_confirm" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <form id="book_registration">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="modal-content">
+                                <div class="modal-header align-items-center">
+                                    <h4 class="modal-title">Confirm your order</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
+                                </div>
+                                <div class="modal-body bg-light border-bottom">
+                                    <div class="row">
+                                        <div class="col-lg my-2">
+                                            <label>ឈ្មោះ</label>
+                                            <input class="form-control" type="text" t-attf-name="name" required="This field is required"/>
+                                        </div>
+                                        <div class="col-lg my-2">
+                                            <label>លេខទូរសព្ទ</label>
+                                            <input class="form-control" type="tel" t-attf-name="phone_number" required="This field is required"/>
+                                        </div>
+                                        <div class="col-lg my-2">
+                                            <label>អាសយដ្ឋាន</label>
+                                            <input class="form-control" type="text" t-attf-name="address"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer border-0 justify-content-between">
+                                    <button type="button" class="btn btn-secondary js_goto_event" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" >Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <template id="idv_book_modal_book_detail" name="Idea view book model order">
+            <div id="modal_book_order_confirm" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <form id="book_registration" t-attf-action="/book/order/confirmed" method="post" class="js_website_submit_form">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="modal-content">
+                            <div class="modal-header align-items-center">
+                                <h4 class="modal-title">Confirm your order</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
+                            </div>
+                            <div class="modal-body bg-light border-bottom">
+                                <div class="row">
+                                    <div class="col-lg my-2">
+                                        <label>ឈ្មោះ</label>
+                                        <input class="form-control" type="text" t-attf-name="name" required="This field is required"/>
+                                    </div>
+                                    <div class="col-lg my-2">
+                                        <label>លេខទូរសព្ទ</label>
+                                        <input class="form-control" type="tel" t-attf-name="phone_number" required="This field is required"/>
+                                    </div>
+                                    <div class="col-lg my-2">
+                                        <label>អាសយដ្ឋាន</label>
+                                        <input class="form-control" type="text" t-attf-name="address"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0 justify-content-between">
+                                <button type="button" class="btn btn-secondary js_goto_event" data-dismiss="modal">Cancel</button>
+                                <button type="submit" id="book-submit-order" class="btn btn-primary" >Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </template>
+        <template id="idv_faq_page_template" name="Idea view faq">
+            <t t-call="ideaview.index">
+                <section id="idv_faq_page_template">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="banner">
+                                    <img class="img img-fluid d-block position-relative" src="/ideaview/static/src/img/aaaa2.png"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <t t-call="ideaview.idv_header_message"/>
+                <section id="reading_blog">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <t t-call="ideaview.s_idv_blog_card_row"/>
+                                <t t-call="ideaview.s_idv_blog_card_row"/>
+                                <t t-call="ideaview.s_idv_blog_card_row"/>
+                                <t t-call="ideaview.s_idv_blog_card_row"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="idv_faq">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="message center">
+                                    <h2 class="font-koulen">សំណួរ​ដែលគេ​ច្រើន​សួរ</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="inner-faq">
+                                    <ul class="list-unstyled">
+                                        <li class="faq-item item" t-foreach="faqs" t-as="faq">
+                                            <h2 t-attf-data-target="item_#{faq.id}" t-field="faq.name"/>
+                                            <p t-attf-class="item_#{faq.id} hide" t-field="faq.answer"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </t>
         </template>
     </data>

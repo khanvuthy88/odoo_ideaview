@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
-from odoo.addons.http_routing.models.ir_http import slug, slugify, _guess_mimetype
+from datetime import datetime
+import random
+import json
+
+from odoo import api, models, fields, _
+from odoo.addons.http_routing.models.ir_http import slug
+from odoo.tools.translate import html_translate
+from odoo.tools import html2plaintext
 
 
 class IDVBook(models.Model):
@@ -17,14 +23,29 @@ class IDVBook(models.Model):
 
     name = fields.Char(required=True)
     description = fields.Html()
-    currency_id = fields.Many2one('res.currency')
+    currency_id = fields.Many2one('res.currency', string='Currency', help="Book's currency.", default=lambda self: self.env.company.currency_id)
     author_id = fields.Many2one('res.partner', default=lambda self: self.env.user.partner_id)
-    price = fields.Float()
+    price = fields.Monetary(currency_field='currency_id')
     book_size = fields.Char()
     book_isbn = fields.Char()
     number_of_pages = fields.Integer()
     book_category = fields.Many2one('idv.book.category')
     audio_file = fields.Binary()
     active = fields.Boolean(default=True)
+    teaser_manual = fields.Text(string='Teaser Content')
+    teaser = fields.Text('Teaser', compute='_compute_teaser', inverse='_set_teaser')
+
+    @api.depends('description', 'teaser_manual')
+    def _compute_teaser(self):
+        for rec in self:
+            if rec.teaser_manual:
+                rec.teaser = rec.teaser_manual
+            else:
+                content = html2plaintext(rec.description).replace('\n', ' ')
+                rec.teaser = content[:200] + '...'
+
+    def _set_teaser(self):
+        for rec in self:
+            rec.teaser_manual = rec.teaser
 
 
