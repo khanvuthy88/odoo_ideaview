@@ -20,7 +20,7 @@
     'version': '0.1.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'theme_ideaview'],
+    'depends': ['base', 'theme_ideaview', 'website_event'],
 
     # always loaded
     'data': [
@@ -38,10 +38,14 @@
         'views/book_customer_view.xml',
         'views/book_order_view.xml',
         'views/faq_view.xml',
+        'views/product_category_view.xml',
+        'views/product_view.xml',
         'views/menu_view.xml',
         'views/assets.xml',
         'views/templates.xml',
+        'views/product_templates.xml',
     ],
+    'license': 'LGPL-3',
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

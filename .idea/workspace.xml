@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="99e0f9a0-38a2-4c2f-9653-c1f5d4a91cc0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ideaview/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideaview/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ideaview/controllers/controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideaview/controllers/controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ideaview/static/src/js/frontend.js" beforeDir="false" afterPath="$PROJECT_DIR$/ideaview/static/src/js/frontend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ideaview/static/src/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ideaview/static/src/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ideaview/views/book_order_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ideaview/views/book_order_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ideaview/views/templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ideaview/views/templates.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/theme_ideaview/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/theme_ideaview/__manifest__.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1zJYaJmR8sJoHuBC39yeDYB6OLb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../odoo14" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="99e0f9a0-38a2-4c2f-9653-c1f5d4a91cc0" name="Changes" comment="" />
+      <created>1633867719398</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633867719398</updated>
+    </task>
+    <servers />
+  </component>
+</project>

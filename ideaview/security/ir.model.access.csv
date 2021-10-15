@@ -14,3 +14,7 @@ access_idv_book_order_line_group_user,idv_book_order_line_group_user,model_idv_b
 access_idv_book_order_line_group_public,idv_book_order_line_group_public,model_idv_book_order_line,base.group_public,1,0,0,0
 access_idv_faq_group_user,idv_faq_group_user,model_idv_faq,base.group_user,1,1,1,1
 access_idv_faq_public_user,idv_faq_group_public,model_idv_faq,base.group_public,1,0,0,0
+access_idv_product_category_group_public,idv_product_category_group_public,model_idv_product_category,base.group_public,1,0,0,0
+access_idv_product_group_public,idv_product_group_public,model_idv_product,base.group_public,1,0,0,0
+access_idv_product_category_group_user,idv_product_category_group_user,model_idv_product_category,base.group_user,1,1,1,1
+access_idv_product_group_user,idv_product_group_user,model_idv_product,base.group_user,1,1,1,1

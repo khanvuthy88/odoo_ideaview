@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="idv_product_category_list" model="ir.ui.view">
+            <field name="name">idv_product_category_list</field>
+            <field name="model">idv.product.category</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="idv_product_category_action" model="ir.actions.act_window">
+            <field name="name">Category</field>
+            <field name="res_model">idv.product.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

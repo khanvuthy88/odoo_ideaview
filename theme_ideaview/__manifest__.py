@@ -28,6 +28,7 @@
         'views/assets.xml',
         'views/templates.xml',
     ],
+    'license': 'LGPL-3',
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

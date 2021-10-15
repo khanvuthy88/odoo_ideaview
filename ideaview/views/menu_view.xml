@@ -9,6 +9,10 @@
             <menuitem id="idv_menu_book_order" name="Book Order" action="ideaview.idv_book_order_action" sequence="1"/>
             <menuitem id="idv_menu_book_customer" name="Book Customer" action="ideaview.idv_book_customer_action" sequence="1"/>
             <menuitem id="idv_menu_book_category" name="Category" action="ideaview.idv_book_category_action" sequence="1"/>
+            <menuitem id="idv_menu_product_root" name="Product">
+                <menuitem id="idv_menu_product" name="Product" action="ideaview.idv_product_action"/>
+                <menuitem id="idv_menu_product_category" name="Product Category" action="ideaview.idv_product_category_action"/>
+            </menuitem>
             <menuitem id="idv_menu_faq" name="FAQ" action="ideaview.idv_faq_action" sequence="1"/>
             <menuitem id="idv_menu_blog_root" name="Blog">
                 <menuitem id="idv_menu_blog_post" name="Blog" action="ideaview.idv_blog_post_action"/>

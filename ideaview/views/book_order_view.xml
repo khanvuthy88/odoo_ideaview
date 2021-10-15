@@ -71,6 +71,15 @@
                 </form>
             </field>
         </record>
+        <record id="idv_book_order_search" model="ir.ui.view">
+            <field name="name">idv_book_order_search</field>
+            <field name="model">idv.book.order</field>
+            <field name="arch" type="xml">
+                <search string="Order Search">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
         <record id="idv_book_order_action" model="ir.actions.act_window">
             <field name="name">Book Order</field>
             <field name="res_model">idv.book.order</field>

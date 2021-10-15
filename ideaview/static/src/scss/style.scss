@@ -41,6 +41,11 @@ $primary-color: #072837;
     }
 }
 
+.container{
+    @include media-breakpoint-up(md){
+        max-width: 1320px;
+    }
+}
 .font-koulen{
     font-family: "KhmerOSKoulen";
 }
@@ -404,7 +409,7 @@ article{
         }
     }
 }
-#idv_blog_post_by_category{
+#idv_blog_post_by_category,#idv_product_index{
     margin: 1rem 0;
     @include media-breakpoint-up(md){
         margin: 1.5rem 0;
@@ -417,23 +422,7 @@ article{
                 }
             }            
         }
-    }
-    header{
-        &.page-header{
-            background-color: $primary-color;
-            color: #fff;
-            padding: .7rem;
-            margin-bottom: 1rem;
-            border-radius: calc(0.25rem - 1px);
-            @include media-breakpoint-up(md){
-                margin-bottom: 1.5rem;
-            }
-            h1{
-                font-size: 1.5rem;
-                margin-bottom: 0;
-            }
-        }
-    }
+    }    
 }
 .breadcrumb{
     @include media-breakpoint-down(md){
@@ -451,6 +440,9 @@ article{
 	box-shadow: 0 10px 15px -3px rgba(0,0,0,.15),0 4px 6px -2px rgba(0,0,0,.04);
     overflow: hidden;
     color: #fff;
+    @include media-breakpoint-up(md){
+        display: block;
+    }
     &:hover{
         transform: translateY(20px);
         &::before{
@@ -475,6 +467,11 @@ article{
 		transition: 0.5s;
 		opacity: 0;
     } 
+    img{
+        @include media-breakpoint-up(md){
+            width: 100%;
+        }
+    }
     .content{
         position: absolute;
         bottom: 0;
@@ -532,19 +529,7 @@ table{
     margin: 1rem 0;
     @include media-breakpoint-up(md){
         margin: 1.5rem 0;
-    }
-    .page-header{
-        margin: 1rem auto;
-        @include media-breakpoint-up(md){
-            margin: 1.5rem auto;
-        }
-        h1{
-            font-size: 1rem;
-            @include media-breakpoint-up(md){
-                font-size: 1.5rem;
-            }
-        }
-    }
+    }    
 }
 article{
     &#blog_card_row{
@@ -622,6 +607,67 @@ li.faq-item{
         padding: .5rem 0;
         &.hide{
             display: none;
+        }
+    }
+}
+
+.booked_success_message{
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin: auto;
+    text-align: center;
+    @include media-breakpoint-up(md){
+        width: 70%;
+        margin-bottom: 5rem;
+        margin-top: 3rem;
+    }
+}
+header{
+    &.page-header{
+        background-color: $primary-color;
+        color: #fff;
+        padding: .7rem;
+        margin-bottom: 1rem;
+        border-radius: calc(0.25rem - 1px);
+        @include media-breakpoint-up(md){
+            margin-bottom: 1.5rem;
+        }
+        h1{
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+    }
+}
+.p_price{
+    position: absolute;
+    bottom: 0;
+    background-color: #142139;
+    color: #f1f1f1;
+    transition: 0.5s ease;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+#idv_product_single{
+    margin: 1rem 0;
+    @include media-breakpoint-up(md){
+        margin: 1.5rem 0;
+    }
+}
+article{
+    &.product{
+        background-color: #fff;
+        padding: 1rem;
+        h1{
+            font-size: 1.5rem;
+        }
+        .entry-meta{
+            line-height: 1.5;
+            align-self: flex-end;
+            flex-wrap: nowrap;
+            padding-bottom: 5px;
+            font-size: 1rem;
         }
     }
 }

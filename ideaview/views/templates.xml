@@ -267,6 +267,9 @@
                                             </div>
                                         </article>
                                     </div>
+                                    <div class="col-12 mt-3 mb-3">
+                                        <div class="oe_structure"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -327,6 +330,9 @@
                                             </div>
                                         </article>
                                     </div>
+                                    <div class="col-12 mt-3 mb-3">
+                                        <div class="oe_structure"/>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -342,6 +348,7 @@
                                         <div class="oe_structure"/>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -461,7 +468,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-right">
-                                                <button data-url="/book/order/js" class="btn btn-primary make-order-js">ទូទាត់ប្រាក់</button>
+                                                <button data-url="/book/book-order/confirm" class="btn btn-primary make-order-js">ទូទាត់ប្រាក់</button>
                                             </td>
                                             <td/>
                                         </tr>
@@ -514,10 +521,20 @@
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                         <div class="modal-content">
                             <div class="modal-header align-items-center">
-                                <h4 class="modal-title">Confirm your order</h4>
+                                <p class="modal-title">សូមបំពេញព័ត៌មានខាងក្រោម</p>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
                             </div>
                             <div class="modal-body bg-light border-bottom">
+                                <div class="row d-none">
+                                    <input type="text" t-attf-name="data_collection" t-att-value="data"/>
+                                </div>
+                                <div class="row d-none">
+                                    <div class="col-12">
+                                        <t t-foreach="data" t-as="book">
+                                            <input type="text" t-att-value="book.get('qty')" t-attf-name="#{book.get('id')}-id"/>
+                                        </t>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg my-2">
                                         <label>ឈ្មោះ</label>
@@ -534,13 +551,31 @@
                                 </div>
                             </div>
                             <div class="modal-footer border-0 justify-content-between">
-                                <button type="button" class="btn btn-secondary js_goto_event" data-dismiss="modal">Cancel</button>
-                                <button type="submit" id="book-submit-order" class="btn btn-primary" >Submit</button>
+                                <button type="button" class="btn btn-secondary js_goto_event" data-dismiss="modal">បោះបង់</button>
+                                <button type="submit" id="book-submit-order" class="btn btn-primary" >រួចរាល់</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+        </template>
+        <template id="idv_book_success_booked" name="Idea View book booked">
+            <t t-call="ideaview.index">
+                <section id="idv_book_success_booked">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="booked_success_message">
+                                    <h2 class="text-center d-block position-relative text-uppercase">thank you</h2>
+                                    <h5>for supporting my small business</h5>
+                                    <p>Although this year has not been easy, it has been truly wonderful sharing it with all our customer</p>
+                                    <p>If you wish to be added to our mailing list, let us know!. Be the first to hear about new products and promotions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
         </template>
         <template id="idv_faq_page_template" name="Idea view faq">
             <t t-call="ideaview.index">

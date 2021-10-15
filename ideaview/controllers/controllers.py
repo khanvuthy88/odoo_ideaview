@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import json
+
 import werkzeug
 import hmac
 import odoo
@@ -8,6 +10,14 @@ from odoo.osv import expression
 from odoo.addons.website.controllers.main import Website
 from odoo.addons.http_routing.models.ir_http import slug
 from odoo.tools.float_utils import float_round
+from odoo.addons.website_event.controllers.main import WebsiteEventController
+
+
+class WebsiteEventController(WebsiteEventController):
+    def _process_tickets_form(self, event, form_details):
+        res = super(WebsiteEventController, self)._process_tickets_form(event, form_details)
+        print(form_details)
+        return res
 
 
 class Website(Website):
@@ -121,37 +131,55 @@ class Website(Website):
     @http.route('/book/book-order/confirm', type='json', auth='public', website=True)
     def book_order_confirm(self, **kw):
         if kw.get('data'):
-            print(kw.get('data'))
-            return {'status': True}
+            return request.env['ir.ui.view']._render_template("ideaview.idv_book_modal_book_detail", {
+                'data': kw.get('data'),
+            })
         return False
 
     @http.route('/book/cart/view', type="http", auth="public", website=True)
     def book_view_cart(self):
         return request.render('ideaview.idv_book_cart_view', {})
 
-    @http.route('/book/order/confirmed', type="json", auth="public", website=True, csrf=False)
-    def book_order_confirmed(self, **kw):
-        if not kw.get('data'):
+    @http.route('/book/order/confirmed', type="http", auth="public", methods=['POST'], website=True)
+    def book_order_confirmed(self, **post):
+        if not post.get('name') or not post.get('phone_number') or not post.get('address'):
             return werkzeug.exceptions.NotFound()
-        order_lines = []
-        user_data = [{'name': rec.get('name'), 'phone_number': rec.get('phone_number'), 'address': rec.get('address')}
-                     for rec in kw.get('user_data')]
-        for line in kw.get('data'):
-            book = request.env['idv.book'].search([('id', '=', line.get('id'))], limit=1)
-            if book:
-                order_lines.append((0, 0, {
-                    'name': book.name,
-                    'book_id': book.id,
-                    'price_unit': book.price,
-                    'qty': line.get('qty'),
+        customer_data = {}
+        book_domain = []
+        book_data = {}
+        data_dict = []
+        for key, value in post.items():
+            print(key, value)
+            if key == 'name':
+                customer_data['name'] = value
+            if key == 'phone_number':
+                customer_data['phone_number'] = value
+            if key == 'address':
+                customer_data['address'] = value
+            if key.endswith('-id'):
+                book = key.split('-')
+                if len(book) != 2:
+                    continue
+                book_data[int(book[0])] = int(value)
+                book_domain.append(int(book[0]))
+        book_obj = request.env['idv.book'].search([('id', 'in', book_domain)])
+        if book_obj:
+            # customer = request.env['idv.book.customer'].sudo().create(customer_data)
+            book_order_line = []
+            for val in book_obj:
+                book_order_line.append((0, 0, {
+                    'name': val.name,
+                    'book_id': val.id,
+                    'price_unit': val.price,
+                    'qty': book_data.get(val.id),
                 }))
-        customer = request.env['idv.book.customer'].sudo().create(user_data)
-
-        request.env['idv.book.order'].sudo().create({
-            'customer_id': customer.id,
-            "order_line": order_lines,
-        })
-        return {'status': True}
+            customer = request.env['idv.book.customer'].sudo().create([customer_data])
+            request.env['idv.book.order'].sudo().create({
+                'customer_id': customer.id,
+                "order_line": book_order_line,
+            })
+            return request.render('ideaview.idv_book_success_booked', {'status': True})
+        return request.render('ideaview.idv_book_success_booked', {'status': False})
 
     @http.route([
         '''/blog/''',
@@ -213,3 +241,49 @@ class Website(Website):
     def power_of_reading(self):
         faqs = request.env['idv.faq'].sudo().search([])
         return request.render('ideaview.idv_faq_page_template', {'faqs': faqs})
+
+
+    @http.route([
+        '''/product''',
+        '''/product/page/<int:page>''',
+        '''/product/category/<model('idv.product.category'):category_id>''',
+        '''/product/category/<model('idv.product.category'):category_id>/page/<int:page>''',
+    ], type="http", auth='public', website=True, sitemap=True)
+    def product_index(self, category_id=None, page=0, *kw):
+        url = '/product'
+        domain = []
+        title = 'ផលិតផលទាំងអស់'
+        product_category = request.env['idv.product.category'].sudo()
+        product_obj = request.env['idv.product'].sudo()
+        if category_id:
+            url = f'/product/category/{slug(category_id)}'
+            domain = [('category_id', '=', category_id.id)]
+            title = f'{category_id.name}'
+        product_count = product_obj.search_count(domain)
+        pager = request.website.pager(url=url, total=product_count, page=page, step=3, scope=3, url_args=kw)
+        products = product_obj.search(domain)
+        categories = product_category.search([])
+        value = {
+            'products': products,
+            'categories': categories,
+            'pager': pager,
+            'title': title,
+        }
+        if category_id:
+            value['main_object']: category_id
+
+        return request.render('ideaview.idv_product_index', value)
+
+    @http.route('''/product/<model('idv.product.category'):category_id>/<model('idv.product'):product_id>''',
+                type="http", auth='public', website=True, sitemap=True)
+    def product_single(self, category_id=None, product_id=None, **kw):
+        if not category_id or not product_id:
+            return werkzeug.exceptions.NotFound()
+        product = request.env['idv.product'].sudo().search([('category_id', '=', category_id.id),
+                                                            ('id', '=', product_id.id)], limit=1)
+        categories = request.env['idv.product.category'].sudo().search([])
+        return request.render('ideaview.idv_product_single', {
+            'main_object': product,
+            'product': product,
+            'categories': categories
+        })

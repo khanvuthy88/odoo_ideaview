@@ -21,52 +21,14 @@ odoo.define('ideaview.frontend', function (require) {
         start: function () {
             var self = this;
             return this._super.apply(arguments).then(function() {
-                if(localStorage.getItem('books')){
-                    let book = JSON.parse(localStorage.getItem('books'));
-                    $('span.cart-item').text(book.length);
-
-                    if($('tbody.table-cart-item')){
-                        var t = "";
-                        $.each(book, function(i, v) {
-                           t += '<tr><td>'+v.title+'</td><td><span data-id="'+v.id+'" class="btn btn-link rounded decrease-qty"><i data-id="'+v.id+'" class="fa fa-minus-circle"/></span>'+v.qty+'<span data-id="'+v.id+'" class="btn btn-link rounded increase-qty"><i data-id="'+v.id+'" class="fa fa-plus-circle"/></span></td><td><img class="rounded img" style="width:30px; height:auto;" src="'+v.image+'"></td><td style="width:150px">'+v.total+'</td></tr>';
-                        });
-                        $('tbody.table-cart-item').append(t);
-                    }
-                    var total = book.reduce((n, {total}) => n + total, 0);
-                    $('span.book-ordered-total').text(new Intl.NumberFormat().format(total));
-                }
+                self._renderTable();
             });
         },
         _makeOrderButton: function(evt){
             evt.preventDefault();
+            evt.stopPropagation();
             var book_obj = JSON.parse(localStorage.getItem('books'));
-            var form = document.forms[0];
-            var user_data = []
-            if(form.elements['name'].value == ' ' || form.elements['phone_number'].value == ' ' || form.elements['address'].value == ''){
-                alert("Form need to fil");
-            }else{
-                user_data.push({
-                    'name': form.elements['name'].value,
-                    'phone_number': form.elements['phone_number'].value,
-                    'address': form.elements['address'].value,
-                });
-                return this._rpc({
-                    route: '/book/order/confirmed',
-                    params: {
-                        'data': book_obj,
-                        'user_data': user_data,
-                    },
-                }).then(function(data){
-                    if(data.status == true){
-                        return new Dialog(null, {
-                            title: _t('Success: Order successes'),
-                            size: 'medium',
-                            $content: "<p>Your order is success</p>" ,
-                            buttons: [
-                            {text: _t('Ok'), close: true}]}).open();
-                    }
-                });
-            }
+            return;
         },
         _removeArray: function(array, key, value){
             console.log(key);
@@ -157,9 +119,17 @@ odoo.define('ideaview.frontend', function (require) {
         _makeOrderJs: function(evt){
             evt.preventDefault();
             evt.stopPropagation();
-            let book_obj = JSON.parse(localStorage.getItem('books'));
-            $('#modal_book_order_confirm').modal('show');
-            this._makeOrderButton(evt);
+            var url = $(evt.currentTarget).data('url');
+            var $button = $(evt.currentTarget).closest('[type="submit"]');
+            var post = [];
+            var book_obj = JSON.parse(localStorage.getItem('books'));
+            console.log(url);
+            return ajax.jsonRpc(url, 'call', {'data': book_obj}).then(function (modal) {
+                var $modal = $(modal);
+                $modal.modal({backdrop: 'static', keyboard: false});
+                $modal.find('.modal-body > div').removeClass('container');
+                $modal.appendTo('body').modal();
+            });
         },
         _addToCart: function(evt){
             evt.preventDefault();

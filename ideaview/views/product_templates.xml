@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="product_category_template">
+            <div class="col-12">
+                <div class="card card-category ">
+                    <div class="card-header">ផលិតផល</div>
+                    <ul class="list-group-flush list-group">
+                        <li t-attf-class="list-group-item" t-foreach="categories" t-as="cate">
+                            <a t-attf-class="text-decoration-none d-flex justify-content-between align-items-center" t-att-title="cate.name" t-att-href="cate.website_url">
+                                <span t-field="cate.name"/>
+                                <span class="badge bg-primary rounded-pill" t-field="cate.product_post_count"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="oe_structure"/>
+            </div>
+        </template>
+        <template id="idv_product_index" name="IDV Product template">
+            <t t-call="ideaview.index">
+                <section id="idv_product_index">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <header class="page-header">
+                                            <h1 class="page-title" t-esc="title"/>
+                                        </header>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4" t-foreach="products" t-as="p">
+                                        <article class="card card-blog">
+                                            <div class="post-thumbnail d-block position-relative">
+                                                <a t-att-href="p.website_url" t-att-title="p.name" t-attf-class="post-thumbnail" t-field="p.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round card-img-top"}'/>
+                                                <p class="p_price" t-field="p.price"/>
+                                            </div>
+                                            <div class="card-body">
+                                                <a t-attf-class="d-block position-relative text-decoration-none" t-att-title="p.name" t-att-href="p.website_url">
+                                                    <h2 class="blog-name text-truncate" t-field="p.name"/>
+                                                </a>
+                                                <p class="blog-content" t-field="p.summary"/>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <t t-call="ideaview.product_category_template"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+        <template id="idv_product_single" name="Single Product">
+            <t t-call="ideaview.index">
+                <section id="idv_product_single">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
+                                                <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                                                    <a t-attf-class="text-decoration-none" t-attf-title="ផលិតផល" property="item" typeof="WebPage" href="/product">
+                                                        <span property="name">ផលិតផល</span>
+                                                        <meta property="position" content="1"/>
+                                                    </a>
+                                                </li>
+                                                <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                                                    <a t-attf-class="text-decoration-none" t-att-title="product.category_id.name" property="item" typeof="WebPage" t-att-href="product.category_id.website_url">
+                                                        <span property="name" t-field="product.category_id"/>
+                                                        <meta property="position" content="2"/>
+                                                    </a>
+                                                </li>
+                                                <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">
+                                                    <span property="name" t-field="product.name"/>
+                                                    <meta property="position" content="2"/>
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <article class="product">
+                                            <header class="entry-header">
+                                                <h1 class="entry-title" t-field="product.name"/>
+                                                <div class="entry-meta text-muted">
+                                                    <span class="cat-links">
+                                                        ប្រភេទ: <span t-field="product.category_id"/>
+                                                    </span>
+                                                    <span class="posted-on">
+                                                        <time t-field="product.create_date" class="entry-date published updated text-nowrap" t-options='{"format": "MMM d, yyyy"}'/>
+                                                    </span>
+                                                </div><!-- .entry-meta -->
+                                            </header>
+                                            <div class="d-block position-relative">
+                                                <div class="post-thumbnail" t-attf-class="post-thumbnail" t-field="product.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round card-img-top"}'/>
+                                                <p class="p_price" t-field="product.price"/>
+                                            </div>
+                                            <div class="entry-content">
+                                                <p t-field="product.content"/>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-12 mt-3 mb-3">
+                                        <div class="oe_structure"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <t t-call="ideaview.product_category_template"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+    </data>
+</odoo>
