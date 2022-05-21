@@ -20,7 +20,7 @@
     'version': '0.1.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'theme_ideaview', 'website_event'],
+    'depends': ['theme_ideaview'],
 
     # always loaded
     'data': [
