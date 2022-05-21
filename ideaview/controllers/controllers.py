@@ -21,6 +21,8 @@ class WebsiteEventController(WebsiteEventController):
 
 
 class Website(Website):
+    _book_per_page = 6
+
     @http.route('/', type='http', auth="public", website=True, sitemap=True)
     def index(self, **kw):
         book_obj = request.env['idv.book'].sudo()
@@ -44,10 +46,10 @@ class Website(Website):
         '''/book/author/<model("res.partner"):author_id>''',
         '''/book/author/<model("res.partner"):author_id>/page/<int:page>''',
     ], type="http", auth="public", website=True, sitemap=True)
-    def book_category_author(self, category_id=None, author_id=None, page=0, **kw):
+    def book_category_author(self, category_id=None, author_id=None, page=1, **kw):
         book_obj = request.env['idv.book'].sudo()
         domain = []
-        header_title = ''
+        header_title = 'Books'
         url = '/book'
         if category_id:
             domain = [('book_category', '=', category_id.id)]
@@ -60,11 +62,11 @@ class Website(Website):
             url = f'/book/author/{slug(author_id)}'
             header_title = f'{author_id.name}'
         book_count = book_obj.search_count(domain)
-        pager = request.website.pager(url=url, total=book_count, page=page, step=3, scope=3, url_args=kw)
+        pager = request.website.pager(url=url, total=book_count, page=page, step=self._book_per_page, scope=self._book_per_page, url_args=kw)
         book_category = request.env['idv.book.category'].sudo().search([])
         book_author = request.env['res.partner'].sudo().search(
             [('book_author', '=', True), ('book_post_ids', '!=', False)])
-        books = book_obj.search(domain)
+        books = book_obj.search(domain, limit=self._book_per_page, offset=pager['offset'])
 
         value = {
             'header_title': header_title,
