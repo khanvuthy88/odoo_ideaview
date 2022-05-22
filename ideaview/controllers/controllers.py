@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 
+import phonenumbers
 import werkzeug
 import hmac
 import odoo
@@ -11,6 +12,7 @@ from odoo.addons.website.controllers.main import Website
 from odoo.addons.http_routing.models.ir_http import slug
 from odoo.tools.float_utils import float_round
 from odoo.addons.website_event.controllers.main import WebsiteEventController
+from odoo.tools import sql
 
 
 class WebsiteEventController(WebsiteEventController):
@@ -93,6 +95,13 @@ class Website(Website):
         author_obj = request.env['res.partner'].sudo().search(
             [('book_author', '=', True), ('book_post_ids', '!=', False)])
 
+        if book_id.id not in request.session.get('posts_viewed', []):
+            if sql.increment_field_skiplock(book_id, 'visits'):
+                if not request.session.get('posts_viewed'):
+                    request.session['posts_viewed'] = []
+                request.session['posts_viewed'].append(book_id.id)
+                request.session.modified = True
+
         return request.render('ideaview.idv_single_book', {
             'main_object': book_id,
             'book': book_id,
@@ -102,7 +111,6 @@ class Website(Website):
     @http.route('/book/add-to-cart', type='json', auth='public', website=True)
     def add_to_cart(self, **kw):
         book_order = request.session.get('book_order')
-        print(book_order)
         value = {
             'status': False,
             'data': []
@@ -151,7 +159,6 @@ class Website(Website):
         book_data = {}
         data_dict = []
         for key, value in post.items():
-            print(key, value)
             if key == 'name':
                 customer_data['name'] = value
             if key == 'phone_number':
@@ -164,6 +171,7 @@ class Website(Website):
                     continue
                 book_data[int(book[0])] = int(value)
                 book_domain.append(int(book[0]))
+
         book_obj = request.env['idv.book'].search([('id', 'in', book_domain)])
         if book_obj:
             # customer = request.env['idv.book.customer'].sudo().create(customer_data)

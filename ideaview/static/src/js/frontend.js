@@ -6,8 +6,20 @@ odoo.define('ideaview.frontend', function (require) {
     var orderIdKey = 'ideaview.add_to_card.order_id';
     var core = require('web.core');
     var Dialog = require('web.Dialog');
+    var dom = require('web.dom');
     var _t = core._t;
     var data = []
+    publicWidget.registry.action_submit_order = publicWidget.Widget.extend({
+        selector: 'form#book_registration',
+        events: {
+            'click button#book-submit-order': "_makeOrderButton",
+        },
+
+        _makeOrderButton: function(evt){
+            evt.preventDefault();
+            console.log(evt);
+        },
+    });
     publicWidget.registry.idv_frontend = publicWidget.Widget.extend({
         selector: '.idv_website',
         events:{
@@ -15,8 +27,8 @@ odoo.define('ideaview.frontend', function (require) {
             'click span.decrease-qty': "_decreaseQty",
             'click span.increase-qty': "_increaseQty",
             'click button.make-order-js': "_makeOrderJs",
-            'click button#book-submit-order': "_makeOrderButton",
-            'click .inner-faq ul li h2': '_faqToggle'
+            'click .inner-faq ul li h2': '_faqToggle',
+            'click a.banner-link': '_makeScroll'
         },
         start: function () {
             var self = this;
@@ -24,9 +36,17 @@ odoo.define('ideaview.frontend', function (require) {
                 self._renderTable();
             });
         },
-        _makeOrderButton: function(evt){
+        _makeScroll: function(evt){
             evt.preventDefault();
-            evt.stopPropagation();
+            console.log(evt);
+            var $el = $(evt.currentTarget.hash);
+            var url = $(evt.currentTarget).data('url');
+            this._clickScrollAction($el, 500, function(){});
+        },
+        _makeOrderButton: function(evt){      
+            evt.preventDefault();
+            console.log(evt);
+            // evt.stopPropagation();
             var book_obj = JSON.parse(localStorage.getItem('books'));
             return;
         },
@@ -115,6 +135,10 @@ odoo.define('ideaview.frontend', function (require) {
             $('span.cart-item').text(cart_item);
             return true;
         },
+        validatePhoneNumber: function(input_str){
+            var re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+            return re.test(input_str);
+        }, 
 
         _makeOrderJs: function(evt){
             evt.preventDefault();
@@ -123,7 +147,6 @@ odoo.define('ideaview.frontend', function (require) {
             var $button = $(evt.currentTarget).closest('[type="submit"]');
             var post = [];
             var book_obj = JSON.parse(localStorage.getItem('books'));
-            console.log(url);
             return ajax.jsonRpc(url, 'call', {'data': book_obj}).then(function (modal) {
                 var $modal = $(modal);
                 $modal.modal({backdrop: 'static', keyboard: false});
@@ -148,6 +171,9 @@ odoo.define('ideaview.frontend', function (require) {
             var target = $(evt.currentTarget).data('target');
             $(evt.currentTarget).toggleClass('expanded');
             $('.'+target).toggleClass('hide');
-        }
+        },
+        _clickScrollAction: function ($el, duration, callback) {
+            dom.scrollTo($el[0], {duration: duration}).then(() => callback());
+        },
     });
 });

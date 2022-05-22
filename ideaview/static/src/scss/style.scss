@@ -40,6 +40,12 @@ $primary-color: #072837;
         transform: translateY(1rem)
     }
 }
+.navbar-toggler{
+    border-color: #fff;
+}
+.navbar-toggler[aria-expanded="true"]{
+    padding-bottom: 1rem;
+}
 
 .container{
     @include media-breakpoint-up(md){
@@ -63,7 +69,12 @@ body{
 }
 section{
     &.s_idv_banner{
-        background-color: $primary-color;
+        background-color: lighten($color:  $primary-color, $amount: 5);
+        height: 270px !important;
+        @include media-breakpoint-up(md){
+            background-color: $primary-color;
+            height: 80% !important;
+        }
         .inner-banner{
             a{
                 &.banner-link{
@@ -73,7 +84,7 @@ section{
                     width: 40px;
                     height: 65px;
                     left: 50%;
-                    bottom: 20px;
+                    bottom: 0;
                     border-radius: 40px;
                     transform: translateX(-50%);
                     @include media-breakpoint-up(md){
@@ -191,8 +202,11 @@ section{
                             p{
                                 margin-bottom: 10px;
                                 font-size: 12px;
+                                max-height: 75px;
+                                overflow: hidden;
                                 @include media-breakpoint-up(md){
                                     font-size: 1rem;
+                                    max-height: auto;
                                 }
                             }
                         }
@@ -440,8 +454,10 @@ article{
 	box-shadow: 0 10px 15px -3px rgba(0,0,0,.15),0 4px 6px -2px rgba(0,0,0,.04);
     overflow: hidden;
     color: #fff;
+    margin-bottom: 15px;
     @include media-breakpoint-up(md){
         display: block;
+        margin: auto;
     }
     &:hover{
         transform: translateY(20px);

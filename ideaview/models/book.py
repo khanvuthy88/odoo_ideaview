@@ -34,6 +34,7 @@ class IDVBook(models.Model):
     active = fields.Boolean(default=True)
     teaser_manual = fields.Text(string='Teaser Content')
     teaser = fields.Text('Teaser', compute='_compute_teaser', inverse='_set_teaser')
+    visits = fields.Integer('No of Views', copy=False, default=0)
 
     @api.depends('description', 'teaser_manual')
     def _compute_teaser(self):
