@@ -42,9 +42,7 @@ $primary-color: #072837;
 }
 .navbar-toggler{
     border-color: #fff;
-}
-.navbar-toggler[aria-expanded="true"]{
-    padding-bottom: 1rem;
+    color: #fff;
 }
 
 .container{
@@ -640,6 +638,13 @@ li.faq-item{
     }
 }
 header{
+    &.o_top_menu_collapse_shown{
+        .navbar-collapse{
+            @include media-breakpoint-down(sm){
+                margin-top: 1rem;
+            }
+        }
+    }
     &.page-header{
         background-color: $primary-color;
         color: #fff;

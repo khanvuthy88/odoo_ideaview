@@ -6,6 +6,11 @@
                 <attribute name="t-attf-class" add="idv_header" separator=" "/>
             </xpath>
         </template>
+        <template id="idv_navbar_toggler" inherit_id="website.navbar_toggler">
+            <xpath expr="//span[hasclass('navbar-toggler-icon')]" position="replace">
+                <i class="fa fa-bars"/>
+            </xpath>
+        </template>
         <template id="idv_header_template" inherit_id="website.layout" name="IDea View Header template">
             <xpath expr="//header//nav" position="replace">
                 <div class="oe_structure oe_structure_header_idv" id="oe_structure_header_idv"/>
