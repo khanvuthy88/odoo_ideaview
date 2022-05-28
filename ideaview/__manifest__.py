@@ -46,6 +46,7 @@
         'views/menu_view.xml',
         'views/assets.xml',
         'views/templates.xml',
+        'views/idv_power_of_reading_by_category.xml',
         'views/product_templates.xml',
     ],
     'license': 'LGPL-3',

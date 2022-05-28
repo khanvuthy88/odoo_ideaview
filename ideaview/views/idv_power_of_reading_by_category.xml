@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="idv_power_of_reading_by_category" name="Power of reading by category">
+            <t t-call="ideaview.index">
+                <section id="idv_power_of_reading_by_category" class="idv_power_of_reading_by_category">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <header class="page-header">
+                                            <h1 class="page-title" t-esc="category.name"/>
+                                        </header><!-- .page-header -->
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div t-foreach="posts" t-as="blog" t-attf-class="col-md-4">
+                                        <article class="card card-blog">
+                                            <a t-att-href="blog.website_url" t-att-title="blog.name" t-attf-class="post-thumbnail" t-field="blog.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round card-img-top"}'/>
+                                            <div class="card-body">
+                                                <a t-attf-class="d-block position-relative text-decoration-none" t-att-title="blog.name" t-att-href="blog.website_url">
+                                                    <h2 class="blog-name text-truncate" t-field="blog.name"/>
+                                                </a>
+                                                <p class="blog-content" t-field="blog.short_description"/>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-inline justify-content-center my-3">
+                                            <t t-call="website.pager"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card card-category">
+                                            <div class="card-header">ប្រភេទអត្ថបទផ្សេងៗ</div>
+                                            <ul class="list-group-flush list-group">
+                                                <li t-attf-class="list-group-item" t-foreach="category_obj" t-as="cate">
+                                                    <a t-attf-class="text-decoration-none d-flex justify-content-between align-items-center" t-att-title="cate.name" t-att-href="cate.website_url">
+                                                        <span t-field="cate.name"/>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+    </data>
+</odoo>

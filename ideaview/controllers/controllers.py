@@ -18,7 +18,6 @@ from odoo.tools import sql
 class WebsiteEventController(WebsiteEventController):
     def _process_tickets_form(self, event, form_details):
         res = super(WebsiteEventController, self)._process_tickets_form(event, form_details)
-        print(form_details)
         return res
 
 
@@ -213,10 +212,10 @@ class Website(Website):
             url = f'/blog/author/{slug(author_id)}'
             category = f'{author_id.name}'
         post_count = post_obj.search_count(domain)
-        pager = request.website.pager(url=url, total=post_count, page=page, step=3, scope=3, url_args=kw)
+        pager = request.website.pager(url=url, total=post_count, page=page, step=self._book_per_page, scope=self._book_per_page, url_args=kw)
         category_obj = request.env['idv.blog.category'].sudo().search([])
         latest = request.env['idv.blog'].sudo().search([], limit=4)
-        posts = post_obj.search(domain, limit=3, offset=pager['offset'])
+        posts = post_obj.search(domain, limit=self._book_per_page, offset=pager['offset'])
         value = {
             'pager': pager,
             'category_obj': category_obj,
@@ -256,17 +255,34 @@ class Website(Website):
             'power_of_reading': power_of_reading,
         })
 
-
     @http.route([
-        '''/blog/<model('idv.blog.category'):category_id>''',
-        '''/blog/<model('idv.blog.category'):category_id>/page/<int:page>''',
-    ], type="http", auth="public", webiste=True, sitemap=True)
-    def power_of_reading_by_category(self, category_id=None, **kw):
+        '''/power-of-reading-category/<model('idv.power.of.reading.category'):category_id>''',
+        '''/power-of-reading-category/<model('idv.power.of.reading.category'):category_id>/page/<int:page>''',
+    ], type="http", auth="public", website=True)
+    def power_of_reading_by_category(self, category_id=None, page=0, **kw):
         if not category_id:
             werkzeug.exceptions.NotFound()
+        domain = []
+        url = '/power-of-reading-category'
+        if category_id:
+            domain = [('category_id', '=', category_id.id)]
+            url = f'/power-of-reading-category/{slug(category_id)}'
+        post = request.env['idv.power.of.reading']
         category_obj = request.env['idv.power.of.reading.category'].sudo().search([])
-        domain = [('category_id', '=', category_id.id)]
-        pass
+        post_count = post.search_count(domain)
+        pager = request.website.pager(url=url, total=post_count, page=page, step=self._book_per_page,
+                                      scope=self._book_per_page, url_args=kw)
+        latest = request.env['idv.power.of.reading'].sudo().search([], limit=5, order='create_date desc')
+        posts = post.search(domain, limit=self._book_per_page, offset=pager['offset'])
+        value = {
+            'category_obj': category_obj,
+            'main_object': category_id,
+            'pager': pager,
+            'posts': posts,
+            'latest': latest,
+            'category': category_id,
+        }
+        return request.render('ideaview.idv_power_of_reading_by_category', value)
 
     @http.route("/power-of-reading/<model('idv.power.of.reading.category'):category_id>/<model('idv.power.of.reading'):post_id>",
                 type='http', auth='public', website=True, sitemap=True)
@@ -299,7 +315,7 @@ class Website(Website):
             domain = [('category_id', '=', category_id.id)]
             title = f'{category_id.name}'
         product_count = product_obj.search_count(domain)
-        pager = request.website.pager(url=url, total=product_count, page=page, step=3, scope=3, url_args=kw)
+        pager = request.website.pager(url=url, total=product_count, page=page, step=self._book_per_page, scope=self._book_per_page, url_args=kw)
         products = product_obj.search(domain)
         categories = product_category.search([])
         value = {

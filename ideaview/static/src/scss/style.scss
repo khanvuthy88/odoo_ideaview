@@ -437,7 +437,7 @@ article{
         }
     }
 }
-#idv_blog_post_by_category,#idv_product_index{
+#idv_blog_post_by_category,#idv_product_index,#idv_power_of_reading_by_category{
     margin: 1rem 0;
     @include media-breakpoint-up(md){
         margin: 1.5rem 0;
@@ -717,3 +717,13 @@ article{
     }
 }
 
+.idv_power_of_reading_by_category{
+    p{
+        &.blog-content{
+            @include media-breakpoint-up(md){
+                max-height: 123px;
+                overflow: hidden;
+            }
+        }
+    }
+}
