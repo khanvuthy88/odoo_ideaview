@@ -247,11 +247,40 @@ class Website(Website):
         }
         return request.render('ideaview.idv_blog_post_single', value)
 
-    @http.route('/power-of-reading-1', type='http', auth='public', website=True)
+    @http.route('/power-of-reading', type='http', auth='public', website=True)
     def power_of_reading(self):
         faqs = request.env['idv.faq'].sudo().search([])
-        return request.render('ideaview.idv_faq_page_template', {'faqs': faqs})
+        power_of_reading = request.env['idv.power.of.reading'].search([])
+        return request.render('ideaview.idv_faq_page_template', {
+            'faqs': faqs,
+            'power_of_reading': power_of_reading,
+        })
 
+
+    @http.route([
+        '''/blog/<model('idv.blog.category'):category_id>''',
+        '''/blog/<model('idv.blog.category'):category_id>/page/<int:page>''',
+    ], type="http", auth="public", webiste=True, sitemap=True)
+    def power_of_reading_by_category(self, category_id=None, **kw):
+        if not category_id:
+            werkzeug.exceptions.NotFound()
+        category_obj = request.env['idv.power.of.reading.category'].sudo().search([])
+        domain = [('category_id', '=', category_id.id)]
+        pass
+
+    @http.route("/power-of-reading/<model('idv.power.of.reading.category'):category_id>/<model('idv.power.of.reading'):post_id>",
+                type='http', auth='public', website=True, sitemap=True)
+    def single_power_of_reading(self, category_id=None, post_id=None, **kw):
+        if not category_id or post_id:
+            werkzeug.exceptions.NotFound()
+        category_obj = request.env['idv.power.of.reading.category'].sudo().search([])
+        latest = request.env['idv.power.of.reading'].sudo().search([], limit=5, order='create_date desc')
+        return request.render('ideaview.idv_power_of_reading_single', {
+            'main_object': post_id,
+            'power_of_reading': post_id,
+            'category_obj': category_obj,
+            'latest': latest,
+        })
 
     @http.route([
         '''/product''',

@@ -18,6 +18,15 @@
                 <menuitem id="idv_menu_blog_post" name="Blog" action="ideaview.idv_blog_post_action"/>
                 <menuitem id="idv_menu_blog_category" name="Category" action="ideaview.idv_blog_category_action"/>
             </menuitem>
+            <menuitem id="idv_menu_power_of_reading_root"
+                      name="Power of Reading">
+                <menuitem id="idv_power_of_reading_menu"
+                          name="Power of Reading"
+                          action="ideaview.action_idv_power_of_reading"/>
+                <menuitem id="idv_power_of_reading_category_menu"
+                          name="Category"
+                          action="ideaview.action_idv_power_of_reading_category"/>
+            </menuitem>
         </menuitem>
     </data>
 </odoo>

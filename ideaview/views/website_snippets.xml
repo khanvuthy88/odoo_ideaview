@@ -2,18 +2,18 @@
 <odoo>
     <data>
         <template id="s_idv_blog_card_row">
-            <article id="blog_card_row" class="card-row">
-                <a class="post-thumbnail" t-attf-href="#" t-attf-title="Article title">
-                    <img t-attf-class="img img-fluid" t-attf-alt="Article title" t-attf-src="/ideaview/static/src/img/photo-1620799004374.jpg"/>
-                </a>
+            <article id="blog_card_row" class="card-row" t-foreach="power_of_reading" t-as="post">
+                <a class="post-thumbnail"
+                   t-att-href="post.website_url"
+                   t-field="post.image_512" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block"}'/>
                 <div class="content">
                     <header class="entry-header">
-                        <a t-attf-class="text-decoration-none d-block position-relative" t-attf-title="Article Name" t-attf-href="#">
-                            <h2 class="entry-title">ស្រីល្អគន់ និងសៀវភៅអានមិនយល់</h2>
+                        <a t-attf-class="text-decoration-none d-block position-relative text-truncate" t-att-title="post.name" t-att-href="post.website_url">
+                            <h2 class="entry-title" t-esc="post.name"/>
                         </a>
                     </header>
                     <div class="entry-content">
-                        <p>ក្រោយមក នាងស​ម្លឹង​មើល​មក​ខ្ញុំ រួច​និយាយ​ថា “និយាយ​ជាមួយ​អ្នក​ពូកែ​អាន អាន​សៀវភៅ​បាន​ច្រើន គឺ​និយាយ​មិន​ឈ្នះ​មែន។ ខ្លួនឯង​មិន​សង្ហា​ហើយ នៅ​រកហេតុផល​តទល់​នឹង​ខ្ញុំ​បាន​ទៀត​! ចាប់ពី​ពេលនេះ​ទៅ ខ្ញុំ​នឹង​ប្រឹង​អាន រក​ទ្រឹ​ស្តី​ល្អ​ៗ វិភាគ​គំ​និ​តជ្រៅ​ៗ ហើយ​សង្ឃឹមថានឹង​បាន​ជជែក​ដេញដោល​នឹង​បង​ទៀត​”។ ...</p>
+                        <p t-esc="post.short_description"/>
                     </div>
                 </div>
             </article>

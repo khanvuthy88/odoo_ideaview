@@ -55,7 +55,7 @@
                                 <a t-att-href="post.website_url" t-attf-class="post-thumbnail d-block position-relative" t-att-title="post.name" t-field="post.image_256" t-options='{"widget": "image", "preview_image": "image_256", "class": "d-block mx-auto rounded w-100"}'/>
                                 <div class="content d-block position-relative text-truncate">
                                     <a t-att-title="post.name" t-field="post.name" t-attf-class="text-truncate text-decoration-none" t-att-href="post.website_url"/>
-                                    <p class="text-muted" t-field="blog.create_date" t-options='{"format": "dd MMM Y"}'/>
+                                    <p class="text-muted" t-field="post.create_date" t-options='{"format": "dd MMM Y"}'/>
                                 </div>
                             </li>
                         </ul>
@@ -595,10 +595,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <t t-call="ideaview.s_idv_blog_card_row"/>
-                                <t t-call="ideaview.s_idv_blog_card_row"/>
-                                <t t-call="ideaview.s_idv_blog_card_row"/>
-                                <t t-call="ideaview.s_idv_blog_card_row"/>
+                                <t t-call="ideaview.s_idv_blog_card_row">
+                                    <t t-set="power_of_reading" t-value="power_of_reading"/>
+                                </t>
                             </div>
                         </div>
                     </div>
@@ -617,11 +616,118 @@
                                 <div class="inner-faq">
                                     <ul class="list-unstyled">
                                         <li class="faq-item item" t-foreach="faqs" t-as="faq">
-                                            <h2 t-attf-data-target="item_#{faq.id}" t-field="faq.name"/>
+                                            <h2 t-attf-class="text-truncate" t-attf-data-target="item_#{faq.id}" t-field="faq.name"/>
                                             <p t-attf-class="item_#{faq.id} hide" t-field="faq.answer"/>
                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+        <template id="idv_power_of_reading_single" name="Power of reading single">
+            <t t-call="ideaview.index">
+                <section id="idv_power_of_reading_single">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
+                                        <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                                            <a t-attf-class="text-decoration-none" t-attf-title="អត្ថបទចែករំលែក" property="item" typeof="WebPage" href="/power-of-reading">
+                                                <span property="name">អំណានជាអំណាច</span>
+                                                <meta property="position" content="1"/>
+                                            </a>
+                                        </li>
+                                        <li property="itemListElement" typeof="ListItem" class="breadcrumb-item">
+                                            <a t-attf-class="text-decoration-none" t-att-title="power_of_reading.category_id.name" property="item" typeof="WebPage" t-att-href="power_of_reading.category_id.website_url">
+                                                <span property="name" t-field="power_of_reading.category_id"/>
+                                                <meta property="position" content="2"/>
+                                            </a>
+                                        </li>
+                                        <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">
+                                            <span property="name" t-field="power_of_reading.name"/>
+                                            <meta property="position" content="2"/>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <article class="idv_blog_single card">
+                                    <div class="card-body">
+                                        <div t-attf-class="post-thumbnail" t-field="power_of_reading.image_1024" t-options='{"widget": "image", "preview_image": "image_1024", "class": "d-block mx-auto rounded w-100"}'/>
+                                        <header class="entry-header">
+                                            <h1 class="entry-title" t-attf-class="d-block position-relative" t-field="power_of_reading.name"/>
+                                            <div class="post-meta-wrapper">
+                                                <ul class="post-meta list-unstyled">
+                                                    <li class="entry-categories"><i class="fa fa-folder"/> <span>ប្រភេទ៖ <a t-attf-class="text-decoration-none" t-att-title="power_of_reading.category_id.name" t-att-href="power_of_reading.category_id.website_url" t-field="power_of_reading.category_id"/></span></li>
+                                                    <li class="post-date"><i class="fa fa-calendar"/> <span t-field="power_of_reading.create_date" t-options='{"format": "dd MMM Y"}'/></li>
+                                                </ul>
+                                            </div>
+                                        </header>
+                                        <div class="entry-content">
+                                            <p t-field="power_of_reading.description"/>
+                                        </div>
+                                        <t t-call="website.s_share"/>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-md-3">
+                                <t t-call="ideaview.idv_category_tmp">
+                                    <t t-set="cart_title" t-valuef="ប្រភេទអត្ថបទផ្សេងៗ"/>
+                                </t>
+                                <t t-call="ideaview.idv_blog_latest_news_tmp">
+                                    <t t-set="cart_title" t-valuef="អត្ថបទថ្មី"/>
+                                    <t t-set="latest" t-value="latest"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+        <template id="idv_power_of_reading_by_category" name="Power of reading by category">
+            <t t-call="ideaview.index">
+                <section id="idv_power_of_reading_by_category">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <header class="page-header">
+                                            <h1 class="page-title" t-esc="category"/>
+                                        </header>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div t-foreach="posts" t-as="blog" t-attf-class="col-md-4">
+                                        <article class="card card-blog">
+                                            <a t-att-href="blog.website_url" t-att-title="blog.name" t-attf-class="post-thumbnail" t-field="blog.image_1920" t-options='{"widget": "image", "preview_image": "image_512", "class": "d-block mx-auto round card-img-top"}'/>
+                                            <div class="card-body">
+                                                <a t-attf-class="d-block position-relative text-decoration-none" t-att-title="blog.name" t-att-href="blog.website_url">
+                                                    <h2 class="blog-name text-truncate" t-field="blog.name"/>
+                                                </a>
+                                                <p class="blog-content" t-field="blog.teaser"/>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-inline justify-content-center my-3">
+                                            <t t-call="website.pager"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <t t-call="ideaview.idv_category_tmp">
+                                    <t t-set="cart_title" t-valuef="ប្រភេទអត្ថបទផ្សេងៗ"/>
+                                </t>
                             </div>
                         </div>
                     </div>

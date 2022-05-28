@@ -5,6 +5,12 @@
             <xpath expr="//header" position="attributes">
                 <attribute name="t-attf-class" add="idv_header" separator=" "/>
             </xpath>
+            <xpath expr="//div[hasclass('o_footer_copyright')]" position="before">
+                <t t-set="no_copyright" t-value="False"/>
+            </xpath>
+            <xpath expr="//span[hasclass('o_footer_copyright_name')]" position="replace">
+                <span class="o_footer_copyright_name mr-2">Copyright &amp;copy; <span t-field="res_company.name" itemprop="name"/></span>
+            </xpath>
         </template>
         <template id="idv_navbar_toggler" inherit_id="website.navbar_toggler">
             <xpath expr="//span[hasclass('navbar-toggler-icon')]" position="replace">
@@ -68,11 +74,24 @@
                 </nav>
             </xpath>
         </template>
-        <template id="homepage_extend" inherit_id="website.homepage">
-            <xpath expr="//div[hasclass('oe_structure')]" position="replace">
-                <div id="wrap" class="oe_structure">
-                    <p>Lorem is amit</p>
-                </div>
+        <template id="idv_brand_promotion_message" inherit_id="web.brand_promotion_message">
+            <xpath expr="//t[@t-set='odoo_logo']" position="replace">
+                <t t-set="odoo_logo">
+                    <a target="_blank"
+                        t-attf-href="#"
+                        class="badge badge-light text-black"
+                        t-field="website.company_id"/>
+                </t>
+            </xpath>
+        </template>
+        <template id="idv_brand_promotion" inherit_id="website.brand_promotion">
+            <xpath expr="//t[@t-call='web.brand_promotion_message']" position="replace">
+                <t  t-call="web.brand_promotion_message">
+                    <t t-set="_message">
+                        Developed by <a target="_blank" href="mailto:khanvuthy88@gmail.com">KHAN Vuthy</a>
+                    </t>
+                    <t t-set="_utm_medium" t-valuef="website"/>
+                </t>
             </xpath>
         </template>
     </data>

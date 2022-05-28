@@ -320,6 +320,10 @@ section{
 .new_book_message{
     h2{
         margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        @include media-breakpoint-up(md){
+            font-size: 2rem;
+        }
     }
     p{                
         @include media-breakpoint-up(md){
@@ -369,7 +373,7 @@ article{
         }
     }
 }
-#idv_blog_post_single{
+#idv_blog_post_single, #idv_power_of_reading_single{
     margin: 1rem 0;
     @include media-breakpoint-up(md){
         margin: 2rem 0;
@@ -595,15 +599,23 @@ li.faq-item{
     padding: .5rem 1rem;
     cursor: pointer;
     h2{
-        font-size: 1.3rem;
+        font-size: 1rem;        
+        font-weight: normal;
+        margin-bottom: 5px;
+        @include media-breakpoint-up(md){
+            font-size: 1.3rem;
+        }
         &::before{
             width: 10px;
             height: 10px;
             content: "\f061";
-            font-size: 1rem;
+            font-size: .7rem;            
             font-weight: normal;
             margin-right: 10px;
             font-family: 'FontAwesome';
+            @include media-breakpoint-up(md){
+                font-size: 1rem;
+            }
         }
         &.expanded{
             &::before{

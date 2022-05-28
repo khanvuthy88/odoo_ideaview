@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="idv_power_of_reading_category_list" model="ir.ui.view">
+            <field name="name">idv_power_of_reading_category_list</field>
+            <field name="model">idv.power.of.reading.category</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="post_count"/>
+                    <field name="website_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_idv_power_of_reading_category" model="ir.actions.act_window">
+            <field name="name">Category</field>
+            <field name="res_model">idv.power.of.reading.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="idv_power_of_reading_list" model="ir.ui.view">
+            <field name="name">idv_power_of_reading_list</field>
+            <field name="model">idv.power.of.reading</field>
+            <field name="arch" type="xml">
+                <tree string="Power of reading list">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="idv_power_of_reading_form" model="ir.ui.view">
+            <field name="name">idv_power_of_reading_form</field>
+            <field name="model">idv.power.of.reading</field>
+            <field name="arch" type="xml">
+                <form string="Power of reading form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" attrs="{'invisible': [('active', '=', False)]}">
+                            <field name="is_published" widget="website_redirect_button"/>
+                        </div>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="Name"/>
+                            <h1><field name="name" placeholder="Name"/></h1>
+                        </div>
+                        <group col="4">
+                            <field name="category_id"/>
+                        </group>
+                        <field name="short_description"/>
+                        <notebook>
+                            <page string="Description" name="description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_idv_power_of_reading" model="ir.actions.act_window">
+            <field name="name">Power of Reading</field>
+            <field name="res_model">idv.power.of.reading</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
