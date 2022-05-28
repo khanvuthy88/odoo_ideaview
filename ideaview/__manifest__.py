@@ -26,6 +26,8 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'views/snippets/s_about_us.xml',
+        'views/snippets/snippets.xml',
         'views/website_snippets.xml',
         'data/website_data.xml',
         'data/data.xml',

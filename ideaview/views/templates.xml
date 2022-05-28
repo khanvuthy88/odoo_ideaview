@@ -590,7 +590,10 @@
                         </div>
                     </div>
                 </section>
-                <t t-call="ideaview.idv_header_message"/>
+                <t t-call="ideaview.idv_header_message">
+                    <t t-set="title_message" t-valuef="អំណានជាអំណាច"/>
+                    <t t-set="message" t-valuef="អ្នកដែលចាក់ចំណេះចូលខួរក្បាល គឺនឹងទទួលបានបញ្ញា។ រីឯអ្នកដែលចាក់មនោសញ្ចេតនាចូលបេះដូង គឺនឹងទទួលបានចិត្តសុខនិងទុក្ខដើរទន្ទឹមគ្នា។ ទាល់តែខួរក្បាលមានវិជ្ជា ទើបបញ្ជាសេចក្តីទុក្ខឱ្យចេញឆ្ងាយពីចិត្តបាន។"/>
+                </t>
                 <section id="reading_blog">
                     <div class="container">
                         <div class="row">

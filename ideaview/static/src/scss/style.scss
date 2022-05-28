@@ -66,6 +66,18 @@ body{
     background-color: #f0f2f5;
 }
 section{
+    &.s_idv_about_us{
+        margin: 2rem auto;
+        .inner-about{
+            border-radius: 8px;
+            border-top: 5px solid $primary-color;
+            padding: 1rem;
+            h2{
+                margin-bottom: 1.5rem;
+                margin-top: 1rem;
+            }
+        }
+    }
     &.s_idv_banner{
         background-color: lighten($color:  $primary-color, $amount: 5);
         height: 270px !important;
@@ -704,3 +716,4 @@ article{
         }
     }
 }
+

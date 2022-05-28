@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="s_idv_about_us" inherit_id="website.snippets" name="IDV About us">
+            <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+                <t t-snippet="ideaview.idv_s_about_us" t-thumbnail="/ideaview/static/src/img/ui/about_us.png"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
