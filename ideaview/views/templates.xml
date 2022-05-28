@@ -300,7 +300,7 @@
                                         </li>
                                         <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">
                                             <span property="name" t-field="blog.name"/>
-                                            <meta property="position" content="2"/>
+                                            <meta property="position" content="3"/>
                                         </li>
                                     </ol>
                                 </nav>
@@ -652,7 +652,7 @@
                                         </li>
                                         <li property="itemListElement" typeof="ListItem" class="breadcrumb-item active" aria-current="page">
                                             <span property="name" t-field="power_of_reading.name"/>
-                                            <meta property="position" content="2"/>
+                                            <meta property="position" content="3"/>
                                         </li>
                                     </ol>
                                 </nav>
