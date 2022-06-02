@@ -256,7 +256,7 @@
                                                             <li>ចំនួនអ្នកចូលមើល: <span t-field="book.visits"/></li>
                                                             <li>ខ្នាតសៀវភៅ: <span t-field="book.book_size"/></li>
                                                             <li>ទំព័រ: <span t-field="book.number_of_pages"/></li>
-                                                            <li>លេខសម្គាល់សៀវភៅ: <span t-field="book.book_isbn"/></li>
+                                                            <li class="text-truncate">លេខសម្គាល់សៀវភៅ: <span t-field="book.book_isbn"/></li>
                                                         </ul>
                                                     </div>
                                                 </div>

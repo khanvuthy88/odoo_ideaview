@@ -216,7 +216,7 @@ section{
                                 overflow: hidden;
                                 @include media-breakpoint-up(md){
                                     font-size: 1rem;
-                                    max-height: auto;
+                                    max-height: unset;
                                 }
                             }
                         }
@@ -382,6 +382,15 @@ article{
                     color: $primary-color;
                 }
             }
+            p{
+                &.blog-content{
+                    height: auto;
+                    @include media-breakpoint-up(md){
+                        max-height: 72px;
+                        overflow: hidden;
+                    }
+                }
+            }
         }
     }
 }
@@ -449,6 +458,14 @@ article{
                     height: 150px;
                 }
             }            
+        }
+        p{
+            &.blog-content{
+                @include media-breakpoint-up(md){
+                    max-height: 96px;
+                    overflow: hidden;
+                }
+            }
         }
     }    
 }
@@ -725,5 +742,10 @@ article{
                 overflow: hidden;
             }
         }
+    }
+}
+.s_share{
+    a{
+        text-decoration: none;
     }
 }

@@ -62,7 +62,7 @@ odoo.define('ideaview.frontend', function (require) {
                 if($('tbody.table-cart-item')){
                     var t = "";
                     $.each(book, function(i, v) {
-                       t += '<tr><td>'+v.title+'</td><td><span data-id="'+v.id+'" class="btn btn-link rounded decrease-qty"><i data-id="'+v.id+'" class="fa fa-minus-circle"/></span>'+v.qty+'<span data-id="'+v.id+'" class="btn btn-link rounded increase-qty"><i data-id="'+v.id+'" class="fa fa-plus-circle"/></span></td><td><img class="rounded img" style="width:30px; height:auto;" src="'+v.image+'"></td><td style="width:150px">'+v.total+'</td></tr>';
+                       t += '<tr><td>'+v.title+'</td><td><span data-id="'+v.id+'" class="btn btn-link rounded decrease-qty"><i data-id="'+v.id+'" class="fa fa-minus-circle"/></span>'+v.qty+'<span data-id="'+v.id+'" class="btn btn-link rounded increase-qty"><i data-id="'+v.id+'" class="fa fa-plus-circle"/></span></td><td>'+ new Intl.NumberFormat().format(v.price)+' ៛</td><td style="width:150px"><img class="rounded img" style="width:30px; height:auto;" src="'+v.image+'"/></td></tr>';
                     });
                     $('tbody.table-cart-item').empty();
                     $('tbody.table-cart-item').append(t);
