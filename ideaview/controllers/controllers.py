@@ -122,7 +122,7 @@ class Website(Website):
                 'id': book.id,
                 'title': book.name,
                 'price': float_round(book.price, 2),
-                'total': 0,
+                'total': float_round(book.price, 2),
                 'qty': 1,
                 'image': f"{request.env['website'].image_url(book, 'image_1024')}"
             }

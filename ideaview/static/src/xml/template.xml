@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="idv.CartView" id="idv_cart_view">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <header class="page-header">
+                        <h1 class="page-title font-koulen">បញ្ជីរទំនិញរបស់អ្នក</h1>
+                    </header><!-- .page-header -->
+                </div>
+                <div class="col-12">
+                    <table class="table bg-light table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ចំណងជើង</th>
+                                <th>បរិមាណ</th>
+                                <th>តម្លៃ​ឯកតា</th>
+                                <th>ក្របសៀវភៅ</th>
+                                <th class="text-right">សរុប</th>
+                            </tr>
+                        </thead>
+                        <t t-set="total" t-value="0.00"/>
+                        <tbody class="">
+                            <tr t-if="Object.keys(data).length" t-foreach="data" t-as="line">
+                                <td><span t-esc="line.title"/></td>
+                                <td>
+                                    <span class="btn btn-link rounded decrease-qty" t-att-data-id="line.id">
+                                        <i class="fa fa-minus-circle"/>
+                                    </span>
+                                    <span t-esc="line.qty"/>
+                                    <span class="btn btn-link rounded increase-qty"  t-att-data-id="line.id">
+                                        <i class="fa fa-plus-circle"/>
+                                    </span>
+                                </td>
+                                <td><span t-esc="line.price" t-options='{"widget": "float", "precision": 2}'/></td>
+                                <td><img t-att-src="line.image" t-attf-style="width: 30px" t-attf-class="img img-fluid"/></td>
+                                <td class="text-right"><span t-esc="line.price * line.qty" t-options='{"widget": "float", "precision": 2}'/> ៛</td>
+                                <t t-set="total" t-value="total + line.total"/>
+                            </tr>
+                        </tbody>
+                        <tfoot class="footer-cart-item">
+                            <tr>
+                                <td class="text-right" colspan="4">តម្លៃសរុប</td>
+                                <td class="text-right">
+                                    <span class="text-right book-ordered-total" t-esc="total_order"/> ៛
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right">
+                                    <button data-url="/book/book-order/confirm"
+                                            t-attf-class="btn btn-primary make-order-js #{disable ? 'disabled' : ''}">ទូទាត់ប្រាក់</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -439,44 +439,7 @@
         <template id="idv_book_cart_view" name="Idea cart view">
             <t t-call="ideaview.index">
                 <section id="idv_book_cart_view">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <header class="page-header">
-                                    <h1 class="page-title font-koulen">បញ្ជីរទំនិញរបស់អ្នក</h1>
-                                </header><!-- .page-header -->
-                            </div>
-                            <div class="col-12">
-                                <table class="table bg-light table-hover">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>ចំណងជើង</th>
-                                            <th>បរិមាណ</th>
-                                            <th>តម្លៃ​ឯកតា</th>
-                                            <th>ក្របសៀវភៅ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="table-cart-item">
-                                        <tr>
 
-                                        </tr>
-                                    </tbody>
-                                    <tfoot class="footer-cart-item">
-                                        <tr>
-                                            <td class="text-right" colspan="3">តម្លៃសរុប</td>
-                                            <td><span class="text-right book-ordered-total"/> ៛</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" class="text-right">
-                                                <button data-url="/book/book-order/confirm" class="btn btn-primary make-order-js">ទូទាត់ប្រាក់</button>
-                                            </td>
-                                            <td/>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
                 <div id="modal_book_order_confirm" class="modal fade" tabindex="-1" role="dialog">
@@ -542,7 +505,8 @@
                                     </div>
                                     <div class="col-lg my-2">
                                         <label>លេខទូរសព្ទ</label>
-                                        <input class="form-control" type="tel" t-attf-name="phone_number" required="This field is required"/>
+                                        <input class="form-control" type="tel" t-attf-name="phone_number"
+                                               required="This field is required"/>
                                     </div>
                                     <div class="col-lg my-2">
                                         <label>អាសយដ្ឋាន</label>
