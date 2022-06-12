@@ -48,6 +48,7 @@
         <template id="idv_blog_latest_news_tmp" name="Idea view latest news">
             <div class="row">
                 <div class="col-12">
+                    <div class="oe_structure"/>
                     <div class="card latest-news-card">
                         <div class="card-header" t-esc="cart_title"/>
                         <ul class="list-group-flush list-group">
@@ -60,6 +61,7 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="oe_structure"/>
                 </div>
             </div>
         </template>
@@ -68,10 +70,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
+                            <div class="oe_structure"/>
+                        </div>
+                        <div class="col-12">
                             <div class="new_book_message mt-5 mb-5 text-center">
                                 <h2 t-attf-class="font-koulen" t-esc="title_message or 'សៀវភៅដែលអ្នកអាចស្វែងរកពីពួកយើង'"/>
                                 <p t-esc="message or 'ខាងក្រោមនេះជាចំណងជើងសៀវភៅទាំងអស់ដែលយើងមានលក់។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។'"/>
                             </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="oe_structure"/>
                         </div>
                     </div>
                 </div>
@@ -174,6 +182,7 @@
         <template id="idv_book_category_tmp" name="Book Category Side bar">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="oe_structure"/>
                     <div class="card card-category">
                         <div class="card-header" t-esc="cart_title"/>
                         <ul class="list-group-flush list-group">
@@ -185,12 +194,14 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="oe_structure"/>
                 </div>
             </div>
         </template>
         <template id="div_book_author_tmp" name="Book Author Side bar">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="oe_structure"/>
                     <div class="card card-category">
                         <div class="card-header" t-esc="cart_title"/>
                         <ul class="list-group-flush list-group">
@@ -202,12 +213,14 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="oe_structure"/>
                 </div>
             </div>
         </template>
         <template id="idv_category_tmp">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="oe_structure"/>
                     <div class="card card-category">
                         <div class="card-header" t-esc="cart_title"/>
                         <ul class="list-group-flush list-group">
@@ -219,6 +232,7 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="oe_structure"/>
                 </div>
             </div>
         </template>
@@ -239,6 +253,9 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="oe_structure"/>
+                                    </div>
                                     <div class="col-md-12">
                                         <article class="card single-book">
                                             <div class="card-body">
@@ -309,6 +326,9 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="oe_structure"/>
+                                    </div>
                                     <div class="col-12">
                                         <article class="idv_blog_single card">
                                             <div class="card-body">
@@ -547,9 +567,15 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                            <div class="col-12">
                                 <div class="banner">
                                     <img class="img img-fluid d-block position-relative" src="/ideaview/static/src/img/aaaa2.png"/>
                                 </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="oe_structure"/>
                             </div>
                         </div>
                     </div>
@@ -624,24 +650,38 @@
                         </div>
                         <div class="row">
                             <div class="col-md-9">
-                                <article class="idv_blog_single card">
-                                    <div class="card-body">
-                                        <div t-attf-class="post-thumbnail" t-field="power_of_reading.image_1024" t-options='{"widget": "image", "preview_image": "image_1024", "class": "d-block mx-auto rounded w-100"}'/>
-                                        <header class="entry-header">
-                                            <h1 class="entry-title" t-attf-class="d-block position-relative" t-field="power_of_reading.name"/>
-                                            <div class="post-meta-wrapper">
-                                                <ul class="post-meta list-unstyled">
-                                                    <li class="entry-categories"><i class="fa fa-folder"/> <span>ប្រភេទ៖ <a t-attf-class="text-decoration-none" t-att-title="power_of_reading.category_id.name" t-att-href="power_of_reading.category_id.website_url" t-field="power_of_reading.category_id"/></span></li>
-                                                    <li class="post-date"><i class="fa fa-calendar"/> <span t-field="power_of_reading.create_date" t-options='{"format": "dd MMM Y"}'/></li>
-                                                </ul>
-                                            </div>
-                                        </header>
-                                        <div class="entry-content">
-                                            <p t-field="power_of_reading.description"/>
-                                        </div>
-                                        <t t-call="website.s_share"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="oe_structure"/>
                                     </div>
-                                </article>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <article class="idv_blog_single card">
+                                            <div class="card-body">
+                                                <div t-attf-class="post-thumbnail" t-field="power_of_reading.image_1024" t-options='{"widget": "image", "preview_image": "image_1024", "class": "d-block mx-auto rounded w-100"}'/>
+                                                <header class="entry-header">
+                                                    <h1 class="entry-title" t-attf-class="d-block position-relative" t-field="power_of_reading.name"/>
+                                                    <div class="post-meta-wrapper">
+                                                        <ul class="post-meta list-unstyled">
+                                                            <li class="entry-categories"><i class="fa fa-folder"/> <span>ប្រភេទ៖ <a t-attf-class="text-decoration-none" t-att-title="power_of_reading.category_id.name" t-att-href="power_of_reading.category_id.website_url" t-field="power_of_reading.category_id"/></span></li>
+                                                            <li class="post-date"><i class="fa fa-calendar"/> <span t-field="power_of_reading.create_date" t-options='{"format": "dd MMM Y"}'/></li>
+                                                        </ul>
+                                                    </div>
+                                                </header>
+                                                <div class="entry-content">
+                                                    <p t-field="power_of_reading.description"/>
+                                                </div>
+                                                <t t-call="website.s_share"/>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="oe_structure"/>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <t t-call="ideaview.idv_category_tmp">
