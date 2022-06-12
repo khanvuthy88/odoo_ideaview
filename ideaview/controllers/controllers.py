@@ -5,7 +5,10 @@ import phonenumbers
 import werkzeug
 import hmac
 import odoo
-from odoo import http
+
+from werkzeug.exceptions import BadRequest
+from odoo.exceptions import ValidationError, UserError
+from odoo import http, _
 from odoo.http import request
 from odoo.osv import expression
 from odoo.addons.website.controllers.main import Website
@@ -149,46 +152,59 @@ class Website(Website):
     def book_view_cart(self):
         return request.render('ideaview.idv_book_cart_view', {})
 
-    @http.route('/book/order/confirmed', type="http", auth="public", methods=['POST'], website=True)
+    @http.route('/book/order/confirmed', type="http", auth="public", methods=['POST'], website=True, csrf=False)
     def book_order_confirmed(self, **post):
         if not post.get('name') or not post.get('phone_number') or not post.get('address'):
             return werkzeug.exceptions.NotFound()
-        customer_data = {}
-        book_domain = []
-        book_data = {}
-        data_dict = []
-        for key, value in post.items():
-            if key == 'name':
-                customer_data['name'] = value
-            if key == 'phone_number':
-                customer_data['phone_number'] = value
-            if key == 'address':
-                customer_data['address'] = value
-            if key.endswith('-id'):
-                book = key.split('-')
-                if len(book) != 2:
-                    continue
-                book_data[int(book[0])] = int(value)
-                book_domain.append(int(book[0]))
+        csrf_token = request.params.pop('csrf_token', None)
+        if not csrf_token or not request.validate_csrf(csrf_token):
+            return werkzeug.exceptions.BadRequest()
+        try:
+            with request.env.cr.savepoint():
+                if request.env['ir.http']._verify_request_recaptcha_token('book_order_confirmed'):
+                    customer_data = {}
+                    book_domain = []
+                    book_data = {}
+                    data_dict = []
+                    for key, value in post.items():
+                        if key == 'name':
+                            customer_data['name'] = value
+                        if key == 'phone_number':
+                            customer_data['phone_number'] = value
+                        if key == 'address':
+                            customer_data['address'] = value
+                        if key.endswith('-id'):
+                            book = key.split('-')
+                            if len(book) != 2:
+                                continue
+                            book_data[int(book[0])] = int(value)
+                            book_domain.append(int(book[0]))
 
-        book_obj = request.env['idv.book'].search([('id', 'in', book_domain)])
-        if book_obj:
-            # customer = request.env['idv.book.customer'].sudo().create(customer_data)
-            book_order_line = []
-            for val in book_obj:
-                book_order_line.append((0, 0, {
-                    'name': val.name,
-                    'book_id': val.id,
-                    'price_unit': val.price,
-                    'qty': book_data.get(val.id),
-                }))
-            customer = request.env['idv.book.customer'].sudo().create([customer_data])
-            request.env['idv.book.order'].sudo().create({
-                'customer_id': customer.id,
-                "order_line": book_order_line,
-            })
-            return request.render('ideaview.idv_book_success_booked', {'status': True})
-        return request.render('ideaview.idv_book_success_booked', {'status': False})
+                    book_obj = request.env['idv.book'].search([('id', 'in', book_domain)])
+                    if book_obj:
+                        # customer = request.env['idv.book.customer'].sudo().create(customer_data)
+                        book_order_line = []
+                        for val in book_obj:
+                            book_order_line.append((0, 0, {
+                                'name': val.name,
+                                'book_id': val.id,
+                                'price_unit': val.price,
+                                'qty': book_data.get(val.id),
+                            }))
+                        customer = request.env['idv.book.customer'].sudo().create([customer_data])
+                        request.env['idv.book.order'].sudo().create({
+                            'customer_id': customer.id,
+                            "order_line": book_order_line,
+                        })
+                        return request.render('ideaview.idv_book_success_booked', {'status': True})
+            # error = _("Suspicious activity detected by Google reCaptcha.")
+
+        except (ValidationError, UserError) as e:
+            error = e.args[0]
+        # return json.dumps({
+        #     'error': error,
+        # })
+        return werkzeug.exceptions.NotAcceptable()
 
     @http.route([
         '''/blog/''',
