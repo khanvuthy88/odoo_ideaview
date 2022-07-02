@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="ideaview_website_form_extend" model="ir.ui.view">
+            <field name="name">ideaview_website_form_extend</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="website_banner"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
