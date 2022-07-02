@@ -140,10 +140,24 @@
                     <t t-set="website" t-value="website"/>
                 </t>
                 <div class="oe_structure"/>
-                <t t-call="ideaview.idv_header_message">
-                    <t t-set="title_message" t-valuef="ស្នាដៃទើបចេញផ្សាយថ្មី"/>
-                    <t t-set="message" t-valuef="ខាងក្រោមនេះជាស្នាដៃដែលទើបតែបានបោះពុម្ពចេញផ្សាយថ្មីក្នុងរយៈពេល៣ខែចុងក្រោយ។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។"/>
-                </t>
+                <section id="idv_header_message">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                            <div class="col-12">
+                                <div class="new_book_message mt-5 mb-5 text-center">
+                                    <h2 t-attf-class="font-koulen">ស្នាដៃទើបចេញផ្សាយថ្មី</h2>
+                                    <p>ខាងក្រោមនេះជាស្នាដៃដែលទើបតែបានបោះពុម្ពចេញផ្សាយថ្មីក្នុងរយៈពេល៣ខែចុងក្រោយ។ ដើម្បីមើលព័ត៌មាន និងមាតិកានៃសៀវភៅ សូមចុចលើ សៀវភៅណាមួយដែលអ្នកចង់ដឹង។</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section id="s_ids_new_books">
                     <div class="container">
                         <div class="row">
@@ -154,10 +168,24 @@
                     </div>
                 </section>
                 <div class="oe_structure"/>
-                <t t-call="ideaview.idv_header_message">
-                    <t t-set="title_message" t-valuef="សៀវភៅពេញនិយមប្រចាំខែ"/>
-                    <t t-set="message" t-valuef="សៀវភៅទាំង៤ចំណងជើងខាងក្រោមនេះ គឺជាស្នាដៃដែលលក់ដាច់ច្រើនជាងគេក្នុងខែមុន។"/>
-                </t>
+                <section id="idv_header_message">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                            <div class="col-12">
+                                <div class="new_book_message mt-5 mb-5 text-center">
+                                    <h2 t-attf-class="font-koulen">សៀវភៅពេញនិយមប្រចាំខែ</h2>
+                                    <p>សៀវភៅទាំង៤ចំណងជើងខាងក្រោមនេះ គឺជាស្នាដៃដែលលក់ដាច់ច្រើនជាងគេក្នុងខែមុន។</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <section id="s_idv_popular_book" class="s_idv_popular_book d-block position-relativve">
                     <div class="container">
                         <div class="row">
@@ -168,13 +196,44 @@
                     </div>
                 </section>
                 <div class="oe_structure"/>
-                <t t-call="ideaview.idv_header_message"/>
+                <section id="idv_header_message">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                            <div class="col-12">
+                                <div class="new_book_message mt-5 mb-5 text-center">
+                                    <h2 t-attf-class="font-koulen">សៀវភៅពេញនិយមប្រចាំខែ</h2>
+                                    <p>សៀវភៅទាំង៤ចំណងជើងខាងក្រោមនេះ គឺជាស្នាដៃដែលលក់ដាច់ច្រើនជាងគេក្នុងខែមុន។</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <t t-call="ideaview.idv_new_book_style1"/>
                 <div class="oe_structure"/>
-                <t t-call="ideaview.idv_header_message">
-                    <t t-set="title_message" t-valuef="អត្ថបទចែករំលែក"/>
-                    <t t-set="message" t-valuef="សូមអរគុណដែលចំណាយពេលវេលាក្នុងការអាន និងចែករំលែកបន្តទៅកាន់មិត្តភក្ដិផ្សេងទៀត និងសូមទទួលបានប្រយោជន៍ច្រើន ពីការអានដោយការត្រិះរិះពិចារណា!"/>
-                </t>
+                <section id="idv_header_message">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                            <div class="col-12">
+                                <div class="new_book_message mt-5 mb-5 text-center">
+                                    <h2 t-attf-class="font-koulen">សៀវភៅពេញនិយមប្រចាំខែ</h2>
+                                    <p>សៀវភៅទាំង៤ចំណងជើងខាងក្រោមនេះ គឺជាស្នាដៃដែលលក់ដាច់ច្រើនជាងគេក្នុងខែមុន។</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="oe_structure"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <t t-call="ideaview.idv_blog_card_tmp">
                     <t t-set="col" t-valuef="col-md-4"/>
                     <t t-set="blogs" t-value="latest_blog"/>
