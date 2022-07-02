@@ -48,6 +48,7 @@
         'views/templates.xml',
         'views/idv_power_of_reading_by_category.xml',
         'views/product_templates.xml',
+        'views/power_of_reading_template.xml',
     ],
     'license': 'LGPL-3',
     'qweb': [

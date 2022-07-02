@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="layout" name="Power of Reading">
+            <t t-call="website.layout">
+                <div id="wrap" class="o_website_power_of_reading js_power_of_reading">
+                    <t t-raw="0"/>
+                    <t t-set="editor_sub_message">Following content will appear on all power of reading.</t>
+                    <div class="oe_structure oe_empty" id="oe_structure_website_power_of_reading_layout_1"
+                         t-att-data-editor-sub-message="editor_sub_message"/>
+                </div>
+            </t>
+        </template>
+        <template id="idv_power_of_reading_v1">
+            <t t-call="ideaview.layout">
+                <!-- Hero -->
+                <div class="js-swiper-blog-metro-hero swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide d-lg-flex min-vh-lg-100 gradient-x-overlay-lg-dark bg-img-start content-space-5"
+                             style="background-image: url('ideaview/static/src/img/1920x1080/img8.jpg');">
+                            <!-- Container -->
+                            <div class="container d-lg-flex align-items-lg-center">
+                                <div class="w-lg-65 text-center mx-lg-auto">
+                                    <a class="text-cap text-white-70" href="#">Adventure</a>
+                                    <div class="4 mb-md-7">
+                                        <h1 class="text-white">The top 30 self-improvement goals we never get around
+                                            to achieving
+                                        </h1>
+                                    </div>
+                                    <a class="btn btn-light btn-transition" href="blog-article.html">Read more
+                                        <i class="bi-chevron-right small ms-1"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- End Container -->
+                        </div>
+
+                        <div class="swiper-slide d-lg-flex min-vh-lg-100 gradient-x-overlay-lg-dark bg-img-start content-space-5"
+                             style="background-image: url('ideaview/static/src/img/1920x1080/img22.jpg');">
+                            <!-- Container -->
+                            <div class="container d-lg-flex align-items-lg-center">
+                                <div class="w-lg-65 text-center mx-lg-auto">
+                                    <a class="text-cap text-white-70" href="#">Science</a>
+                                    <div class="mb-4 mb-md-7">
+                                        <h2 class="h1 text-white">Bonded﻿ by science: researchers describe their
+                                            nerdy proposals
+                                        </h2>
+                                    </div>
+                                    <a class="btn btn-light btn-transition" href="blog-article.html">Read more
+                                        <i class="bi-chevron-right small ms-1"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- End Container -->
+                        </div>
+
+                        <div class="swiper-slide d-lg-flex min-vh-lg-100 gradient-x-overlay-lg-dark bg-img-start content-space-5"
+                             style="background-image: url('ideaview/static/src/img/1920x1080/img2.jpg');">
+                            <!-- Container -->
+                            <div class="container d-lg-flex align-items-lg-center">
+                                <div class="w-lg-65 text-center mx-lg-auto">
+                                    <a class="text-cap text-white-70" href="#">Environment</a>
+                                    <div class="mb-4 mb-md-7">
+                                        <h2 class="h1 text-white">Tree rings reveal increased fire risk for
+                                            southwestern US
+                                        </h2>
+                                    </div>
+                                    <a class="btn btn-light btn-transition" href="blog-article.html">Read more
+                                        <i class="bi-chevron-right small ms-1"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- End Container -->
+                        </div>
+
+                        <div class="swiper-slide d-lg-flex min-vh-lg-100 gradient-x-overlay-lg-dark bg-img-start content-space-5"
+                             style="background-image: url('ideaview/static/src/img/1920x1080/img7.jpg');">
+                            <!-- Container -->
+                            <div class="container d-lg-flex align-items-lg-center">
+                                <div class="w-lg-65 text-center mx-lg-auto">
+                                    <a class="text-cap text-white-70" href="#">Lifestyle</a>
+                                    <div class="mb-4 mb-md-7">
+                                        <h2 class="h1 text-white">2020's Most Relaxing and Affordable Vacations</h2>
+                                    </div>
+                                    <a class="btn btn-light btn-transition" href="blog-article.html">Read more
+                                        <i class="bi-chevron-right small ms-1"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- End Container -->
+                        </div>
+                    </div>
+
+                    <!-- Swiper Pagination -->
+                    <div class="js-swiper-blog-metro-hero-pagination swiper-pagination swiper-pagination-light position-absolute bottom-0 start-0 end-0 mb-5"/>
+                </div>
+                <!-- End Hero -->
+                <div class="container content-space-b-2 content-space-b-lg-3">
+                    <div class="row mb-7 mt-7">
+                        <div class="col-sm-6 col-lg-3 mb-4" t-foreach="posts" t-as="post">
+                            <div class="card h-100" style="max-width: 20rem;">
+                                <div class="card-pinned">
+                                    <img class="card-img-bottom" t-attf-src="/website/image/idv.power.of.reading/#{post.id}/image_256" t-att-alt="post.name"/>
+
+                                    <span class="card-pinned-bottom-start">
+                                        <span class="badge bg-primary rounded-pill" t-esc="post.category_id.name"/>
+                                    </span>
+                                </div>
+
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                        <a t-att-title="post.name" class="text-dark" t-att-href="post.website_url" t-field="post.name"/>
+                                    </h3>
+                                    <p class="card-text">Learn the simplest way to select the object and change
+                                        dimensions.
+                                    </p>
+                                </div>
+
+                                <div class="card-footer pt-0">
+                                    <a t-att-title="post.name" class="card-link" t-att-href="post.website_url">Learn more
+                                        <i class="bi-chevron-right small ms-1"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

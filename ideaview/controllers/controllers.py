@@ -272,6 +272,21 @@ class Website(Website):
         })
 
     @http.route([
+        '''/power-of-reading-v''',
+        '''/power-of-reading-v/page/<int:page>'''
+    ], type="http", auth="public", website=True)
+    def power_of_reading_v1(self, page=0, **kw):
+        PowerOfReading = request.env['idv.power.of.reading']
+        domain = request.website.website_domain()
+        post_count = PowerOfReading.sudo().search_count(domain)
+        pager = request.website.pager(url=f'/power-of-reading-v', total=post_count, page=page, step=self._book_per_page, scope=self._book_per_page, url_args=kw)
+        posts = PowerOfReading.search(domain, limit=self._book_per_page, offset=pager['offset'])
+        return request.render('ideaview.idv_power_of_reading_v1', {
+            'pager': pager,
+            'posts': posts
+        })
+
+    @http.route([
         '''/power-of-reading-category/<model('idv.power.of.reading.category'):category_id>''',
         '''/power-of-reading-category/<model('idv.power.of.reading.category'):category_id>/page/<int:page>''',
     ], type="http", auth="public", website=True)
