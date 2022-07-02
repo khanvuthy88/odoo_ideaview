@@ -34,7 +34,9 @@ class Website(Website):
         popular_books = book_obj.search([], limit=4)
         search_books = book_obj.search([], limit=4)
         latest_blog = request.env['idv.blog'].sudo().search([], limit=6)
+        website_banner = request.website.image_url(request.website, 'website_banner')
         values = {
+            'website_banner': website_banner,
             'new_books': new_books,
             'popular_books': popular_books,
             'search_books': search_books,

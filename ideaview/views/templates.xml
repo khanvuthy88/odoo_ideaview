@@ -136,7 +136,9 @@
         <template id="idv_homepage" name="IDear View Homepage">
             <t t-call="ideaview.index">
                 <div class="oe_structure"/>
-                <t t-call="ideaview.s_ids_homepage_banner"/>
+                <t t-call="ideaview.s_ids_homepage_banner">
+                    <t t-set="website" t-value="website"/>
+                </t>
                 <div class="oe_structure"/>
                 <t t-call="ideaview.idv_header_message">
                     <t t-set="title_message" t-valuef="ស្នាដៃទើបចេញផ្សាយថ្មី"/>

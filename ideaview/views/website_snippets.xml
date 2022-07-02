@@ -95,7 +95,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="inner-banner">
-                                <img t-attf-alt="Banner" t-att-src="website.image_url(website, 'website_banner')" t-attf-class="post-thumbnail img img-fluid d-block position-relative"/>
+                                <img t-attf-alt="Banner" t-att-src="website_banner" t-attf-class="post-thumbnail img img-fluid d-block position-relative"/>
+<!--                                <img t-attf-alt="Banner" t-attf-src="/website/image/website/#{website.id}/website_banner" t-attf-class="post-thumbnail img img-fluid d-block position-relative"/>-->
                                 <a t-attf-class="banner-link" t-attf-href="#idv_header_message" title="Banner" t-attf-data-url="#idv_header_message">
                                     <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
                                 </a>
