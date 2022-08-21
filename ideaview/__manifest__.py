@@ -20,7 +20,7 @@
     'version': '0.1.8',
 
     # any module necessary for this one to work correctly
-    'depends': ['theme_ideaview', 'google_recaptcha'],
+    'depends': ['theme_ideaview', 'website', 'google_recaptcha'],
 
     # always loaded
     'data': [
