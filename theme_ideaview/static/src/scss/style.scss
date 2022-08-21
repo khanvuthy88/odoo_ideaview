@@ -11,6 +11,13 @@ $primary-color: #072837;
     background-color: $primary-color;
     color: #fff;
 }
+.s_idv_banner{
+    min-height: auto;
+    background-size: cover;
+    @include media-breakpoint-up(md){
+        min-height: 90vh;
+    }
+}
 nav{
     &.idv-navbar{
         a{

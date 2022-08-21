@@ -17,21 +17,7 @@
                 <i class="fa fa-bars"/>
             </xpath>
         </template>
-<!--        <template id="idv_login_menu_extend" inherit_id="portal.placeholder_user_sign_in">-->
-<!--            <xpath expr="." position="before">-->
-<!--                <li t-attf-class="nav-item">-->
-<!--                    <a t-attf-href="/book/cart/view"-->
-<!--                        t-attf-class="nav-link text-white"-->
-<!--                        role="menuitem"-->
-<!--                        t-ignore="true">-->
-<!--                        <span class="cart-menu">-->
-<!--                            <i class="fa fa-shopping-cart"/>-->
-<!--                            <span class="cart-item"/>-->
-<!--                        </span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </xpath>-->
-<!--        </template>-->
+
         <template id="idv_header_template" inherit_id="website.layout" name="IDea View Header template">
             <xpath expr="//header//nav" position="replace">
                 <div class="oe_structure oe_structure_header_idv" id="oe_structure_header_idv"/>
@@ -56,7 +42,17 @@
                                         <t t-set="link_class" t-value="'nav-link'"/>
                                     </t>
                                 </t>
-
+                                <li t-attf-class="nav-item">
+                                    <a t-attf-href="/book/cart/view"
+                                        t-attf-class="nav-link text-white"
+                                        role="menuitem"
+                                        t-ignore="true">
+                                        <span class="cart-menu">
+                                            <i class="fa fa-shopping-cart"/>
+                                            <span class="cart-item"/>
+                                        </span>
+                                    </a>
+                                </li>
                                 <!-- Sign In -->
                                 <t t-call="portal.placeholder_user_sign_in">
                                     <t t-set="_item_class" t-value="'nav-item ml-lg-auto'"/>
