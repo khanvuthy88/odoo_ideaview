@@ -262,6 +262,12 @@ class Website(Website):
             'author_obj': author_obj,
             'latest': latest,
         }
+        if blog_id.id not in request.session.get('blog_viewed', []):
+            if sql.increment_field_skiplock(blog_id, 'visits'):
+                if not request.session.get('blog_viewed'):
+                    request.session['blog_viewed'] = []
+                request.session['blog_viewed'].append(blog_id.id)
+                request.session.modified = True
         return request.render('ideaview.idv_blog_post_single', value)
 
     @http.route('/power-of-reading', type='http', auth='public', website=True)
